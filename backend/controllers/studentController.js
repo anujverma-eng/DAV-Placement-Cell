@@ -148,7 +148,7 @@ exports.forgotPassword = catchAsyncErrors(async (req, res, next) => {
     // const resetPasswordUrl = `${req.protocol}://${req.get("host")}/api/v1/password/reset/${resetToken}`;
 
     //!below is for -- development
-    const resetPasswordUrl = `${req.protocol}://${process.env.FRONTEND_URL}/password/reset/${resetToken}`;
+    const resetPasswordUrl = `${process.env.FRONTEND_URL}/password/reset/${resetToken}`;
 
     const message = `D.A.V. College, Jalandhar \n Placement Cell \n your reset password link: \n\n ${resetPasswordUrl} \n \n If you have not requested this email then please ignore it`;
 

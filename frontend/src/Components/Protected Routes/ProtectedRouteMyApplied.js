@@ -14,7 +14,7 @@ const ProtectedRouteMyApplied = ({ isAuthenticated, loading, student }) => {
     return (
         <Fragment>
             {!loading && (
-                <MyApplied isAuthenticated={isAuthenticated} loading={loading} student={student} />
+                <MyApplied />
             )}
         </Fragment>
     );

@@ -10,7 +10,7 @@ import { Typography } from '@mui/material';
 import MetaData from '../../Layouts/Metadata';
 import LaunchIcon from '@mui/icons-material/Launch';
 
-const MyApplied = ({ }) => {
+const MyApplied = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
 
