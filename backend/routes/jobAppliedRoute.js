@@ -9,15 +9,15 @@ router.route('/jobApplied/new').post(isAuthenticatedUser, newJobApply);
 
 // router.route('/jobApplied/me/:id').get(isAuthenticatedUser, getJobsWhereIHaveApplied);
 
-// Only Admin
 router.route('/jobApplied/:id').get(isAuthenticatedUser, getSingleApplied);
 
 router.route('/myApplied').get(isAuthenticatedUser, getMyApplied);
 
+// Only Admin
 router.route('/admin/jobApplied').get(isAuthenticatedUser, authorizeRoles('admin'), getAllApplied);
 
 router.route('/admin/jobApplied/:id')
-.put(isAuthenticatedUser, authorizeRoles('admin'),updateApplied)
-.delete(isAuthenticatedUser, authorizeRoles('admin'),deleteApplied)
+    .put(isAuthenticatedUser, authorizeRoles('admin'), updateApplied)
+    .delete(isAuthenticatedUser, authorizeRoles('admin'), deleteApplied);
 
 module.exports = router;
