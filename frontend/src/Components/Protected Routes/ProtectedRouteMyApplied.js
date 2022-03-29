@@ -1,23 +1,32 @@
 import React, { Fragment } from 'react';
-import { useNavigate } from 'react-router-dom';
+import Loader from '../Layouts/Loader/Loader';
 import MyApplied from '../User/MyApplied/MyApplied';
+import LoginComponent from '../User/LoginSignUp/LoginComponent';
 
 const ProtectedRouteMyApplied = ({ isAuthenticated, loading, student }) => {
 
-    const navigate = useNavigate();
-    React.useEffect(() => {
-        if (!isAuthenticated) {
-            navigate("/login", { replace: true });
-        }
-    }, [navigate, isAuthenticated]);
 
-    return (
-        <Fragment>
-            {!loading && (
-                <MyApplied />
-            )}
-        </Fragment>
-    );
+    if (isAuthenticated === undefined) {
+        return (
+            <Loader />
+        );
+    } else {
+        if (isAuthenticated === true) {
+            return (
+                <Fragment>
+                    {!loading && (
+                        <MyApplied />
+                    )}
+                </Fragment>
+            );
+        } else {
+            return (
+                <Fragment>
+                    <LoginComponent />
+                </Fragment>
+            );
+        }
+    }
 };
 
 export default ProtectedRouteMyApplied;

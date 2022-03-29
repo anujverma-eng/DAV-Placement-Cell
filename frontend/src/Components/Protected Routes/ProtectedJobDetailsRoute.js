@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react';
+import JobDetailsComponent from '../Jobs/JobDetails/jobDetailsComponent';
 import Loader from '../Layouts/Loader/Loader';
 import LoginComponent from '../User/LoginSignUp/LoginComponent';
-import UpdateProfileComponent from '../User/ProfileComponent/UpdateProfileComponent';
 
-const ProtectedUpdateRoute = ({ isAuthenticated, loading, student }) => {
+const ProtectedJobDetailsRoute = ({ isAuthenticated, loading, student }) => {
 
     if (isAuthenticated === undefined) {
         return (
@@ -13,7 +13,7 @@ const ProtectedUpdateRoute = ({ isAuthenticated, loading, student }) => {
         if (isAuthenticated === true) {
             return (
                 <Fragment>
-                    <UpdateProfileComponent />
+                    <JobDetailsComponent />
                 </Fragment>
             );
         } else {
@@ -24,6 +24,8 @@ const ProtectedUpdateRoute = ({ isAuthenticated, loading, student }) => {
             );
         }
     }
+
+
 };
 
-export default ProtectedUpdateRoute;
+export default ProtectedJobDetailsRoute;

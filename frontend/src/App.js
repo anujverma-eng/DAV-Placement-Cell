@@ -21,6 +21,7 @@ import UpdatePassword from './Components/User/UpdatePassword/UpdatePassword';
 import ResetPassword from './Components/User/ResetPassword/ResetPassword';
 import ProtectedRouteMyApplied from './Components/Protected Routes/ProtectedRouteMyApplied';
 import Loader from './Components/Layouts/Loader/Loader';
+import ProtectedJobDetailsRoute from './Components/Protected Routes/ProtectedJobDetailsRoute';
 
 function App() {
   const { isAuthenticated, student, error } = useSelector((state) => state.studentReducer);
@@ -42,7 +43,7 @@ function App() {
       {!isAuthenticated && <Link to={'login'} />}
       <Routes>
         <Route exact path='/' element={<Home />} />
-        <Route exact path='/job/:id' element={<JobDetailsComponent />} />
+        <Route exact path='/job/:id' element={<ProtectedJobDetailsRoute isAuthenticated={isAuthenticated} error={error} student={student} />} />
         <Route exact path='/login' element={<LoginComponent />} />
         <Route exact path='/register' element={<SignUpComponent />} />
         <Route exact path='/new/job' element={<CreateJob />} />
