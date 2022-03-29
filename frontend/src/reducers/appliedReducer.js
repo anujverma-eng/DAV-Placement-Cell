@@ -1,38 +1,9 @@
 import {
-    APPLY_JOB_REQUEST, APPLY_JOB_SUCCESS, APPLY_JOB_FAIL, ADD_TO_JOB_APPLIED,
-    CLEAR_ERRORS
+APPLY_JOB_REQUEST, APPLY_JOB_SUCCESS, APPLY_JOB_FAIL,
+    CLEAR_ERRORS, MY_APPLIED_REQUEST, MY_APPLIED_SUCCESS, MY_APPLIED_FAIL
 } from "../constants/jobAppliedConstants";
 
-export const addToAppliedReducer = (state = { appliedJobs: [] }, action) => {
 
-    switch (action.type) {
-        case ADD_TO_JOB_APPLIED:
-            const item = action.payload;
-
-            const jobExist = state.appliedJobs.find((element) =>
-                element.job === item.job
-            );
-
-            if (jobExist) {
-                return {
-                    ...state,
-                    appliedJobs: state.appliedJobs.map((i) =>
-                        i.job === jobExist.job ? item : i
-                    ),
-                };
-            } else {
-                return {
-                    ...state,
-                    appliedJobs: [...state.appliedJobs, item],
-                };
-            }
-
-
-        default:
-            return state;
-    }
-
-};
 
 export const applyToNewJobReducer = (state = {}, action) => {
     switch (action.type) {
@@ -58,6 +29,33 @@ export const applyToNewJobReducer = (state = {}, action) => {
             return {
                 ...state,
                 message: null,
+            };
+        default:
+            return state;
+    }
+};
+
+
+export const myAppliedReducer = (state = { applied: [] }, action) => {
+    switch (action.type) {
+        case MY_APPLIED_REQUEST:
+            return {
+                loading: true,
+            };
+        case MY_APPLIED_SUCCESS:
+            return {
+                loading: false,
+                jobApplied: action.payload,
+            };
+        case MY_APPLIED_FAIL:
+            return {
+                loading: false,
+                error: action.payload,
+            };
+        case CLEAR_ERRORS:
+            return {
+                ...state,
+                error: null,
             };
         default:
             return state;

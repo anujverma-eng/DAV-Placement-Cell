@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { clearErrors, loadStudent, updateStudentProfile } from '../../../actions/studentAction';
 import { useAlert } from 'react-alert';
@@ -13,7 +13,7 @@ const UpdateProfileComponent = () => {
     const alert = useAlert();
     const navigate = useNavigate();
 
-    const { student, isAuthenticated } = useSelector((state) => state.studentReducer);
+    const { student } = useSelector((state) => state.studentReducer);
     const { error, isUpdated, loading } = useSelector((state) => state.updateStudentProfileReducer);
 
     useEffect(() => {

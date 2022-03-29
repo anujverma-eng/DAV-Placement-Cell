@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { jobDetailsReducer, jobReducer } from './reducers/jobReducer';
 import { forgotPasswordReducer, studentReducer, updateStudentProfileReducer } from './reducers/studentReducer';
-import { addToAppliedReducer, applyToNewJobReducer } from './reducers/appliedReducer';
+import { applyToNewJobReducer, myAppliedReducer } from './reducers/appliedReducer';
 
 const reducer = combineReducers({
     jobReducer: jobReducer,
@@ -12,17 +12,11 @@ const reducer = combineReducers({
     updateStudentProfileReducer: updateStudentProfileReducer,
     forgotPasswordReducer: forgotPasswordReducer,
     applyToNewJobReducer: applyToNewJobReducer,
-    addToAppliedReducer: addToAppliedReducer
+    myAppliedReducer: myAppliedReducer
 
 });
 
-const initialState = {
-    addToAppliedReducer: {
-        appliedJobs: localStorage.getItem("appliedJobs")
-            ? JSON.parse(localStorage.getItem("appliedJobs"))
-            : [],
-    }
-};
+const initialState = {};
 
 
 const middleWare = [thunk,];

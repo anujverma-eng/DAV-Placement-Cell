@@ -5,6 +5,7 @@ import Footer from './Components/Layouts/Footer/Footer';
 import Home from './Components/Home/Home';
 import webFont from 'webfontloader';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { BrowserRouter as Router, Routes, Route, Navigate, Link } from 'react-router-dom';
 import JobDetailsComponent from './Components/Jobs/JobDetails/jobDetailsComponent';
 import LoginComponent from './Components/User/LoginSignUp/LoginComponent';
@@ -18,9 +19,10 @@ import ProtectedRoute from './Components/Protected Routes/ProtectedRoute';
 import ProtectedUpdateRoute from './Components/Protected Routes/ProtectedUpdateRoute';
 import UpdatePassword from './Components/User/UpdatePassword/UpdatePassword';
 import ResetPassword from './Components/User/ResetPassword/ResetPassword';
+import ProtectedRouteMyApplied from './Components/Protected Routes/ProtectedRouteMyApplied';
+import Loader from './Components/Layouts/Loader/Loader';
 
 function App() {
-
   const { isAuthenticated, student, error } = useSelector((state) => state.studentReducer);
 
   React.useEffect(() => {
@@ -31,6 +33,7 @@ function App() {
     });
     store.dispatch(loadStudent());
   }, []);
+
 
   return (
     <Router>
@@ -44,6 +47,7 @@ function App() {
         <Route exact path='/register' element={<SignUpComponent />} />
         <Route exact path='/new/job' element={<CreateJob />} />
         <Route exact path='/account' element={<ProtectedRoute isAuthenticated={isAuthenticated} error={error} student={student} />} />
+        <Route exact path='/myApplied' element={<ProtectedRouteMyApplied isAuthenticated={isAuthenticated} error={error} student={student} />} />
         <Route exact path='/profile/update' element={<ProtectedUpdateRoute isAuthenticated={isAuthenticated} />} />
         <Route exact path='/password/forgot' element={<UpdatePassword />} />
         <Route exact path='/password/reset/:token' element={<ResetPassword />} />

@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from 'react';
 import './jobDetailsComponent.css';
 import { clearErrors, getJobDetails } from '../../../actions/jobAction';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import Loader from '../../Layouts/Loader/Loader';
 import { useAlert } from 'react-alert';
 import Metadata from '../../Layouts/Metadata';
@@ -12,7 +12,8 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Button from '@mui/material/Button';
-import { addToJobApplied, newJobApplied } from '../../../actions/appliedAction';
+import { myApplied, newJobApplied } from '../../../actions/appliedAction';
+import LaunchIcon from '@mui/icons-material/Launch';
 
 const JobDetailsComponent = () => {
     const alert = useAlert();
@@ -21,9 +22,9 @@ const JobDetailsComponent = () => {
     const navigate = useNavigate();
 
     const { loading, error, job } = useSelector((state) => state.jobDetailsReducer);
-    const { isAuthenticated } = useSelector((state) => state.studentReducer);
+    const { isAuthenticated, student } = useSelector((state) => state.studentReducer);
     const { message } = useSelector((state) => state.applyToNewJobReducer);
-    const { appliedJobs } = useSelector((state) => state.addToAppliedReducer);
+    const { jobApplied } = useSelector((state) => state.myAppliedReducer);
 
     let lastDateToApply = "";
     if (job.lastDateToApply !== undefined) {
@@ -44,6 +45,8 @@ const JobDetailsComponent = () => {
         } else {
             navigate('/login', { replace: true });
         }
+        dispatch(myApplied());
+
     }, [dispatch, params.id, alert, error, isAuthenticated, navigate, message]);
 
 
@@ -65,30 +68,31 @@ const JobDetailsComponent = () => {
         setOpen(false);
     };
 
+    //* For Apply Dialog Box
+    const [applyOpen, setApplyOpen] = useState(false);
 
-    let checkIf = false;
-    if (appliedJobs) {
-        checkIf = appliedJobs.map((element) => {
-            console.log(element.id);
-            if (element.job.toString() === params.id) {
-                return true;
-            } else {
-                return false;
-            }
-        });
-    }
+    const handleApplyClickOpen = () => {
+        setApplyOpen(true);
+    };
+    const handleApplyClose = () => {
+        setApplyOpen(false);
+    };
+
+
+    const alreadyAppliedJobsID = [];
+    jobApplied && jobApplied.forEach((element, idx) => {
+        alreadyAppliedJobsID.push(element.appliedJobs[0].job._id);
+    });
 
     const handleApplyNow = () => {
         const appliedJobID = { job: params.id };
         dispatch(newJobApplied(appliedJobID));
-        dispatch(addToJobApplied(params.id));
-
-        console.log(appliedJobs);
 
         //Means if there is no true present in checkIf array -- means it must contains all false
-        if (!checkIf.includes(true)) {
+        if (!alreadyAppliedJobsID.includes(params.id)) {
             alert.success("You have applied successfully");
         }
+        handleApplyClickOpen();
 
     };
 
@@ -169,11 +173,11 @@ const JobDetailsComponent = () => {
                                 </div>
                             </div>
                         </div>
-                        {checkIf.includes(true) ?
+                        {alreadyAppliedJobsID.includes(params.id) ?
                             <div className="row">
                                 <div className="col">
                                     <div className="text-center" style={{ padding: "8px" }}>
-                                        <button disabled={!isAuthenticated} className="btn btn-outline-primary" type="button" style={{ width: "121.5px" }}>Check Status</button>
+                                        <button disabled={!isAuthenticated} className="btn btn-outline-primary" type="button" style={{ width: "121.5px" }}><Link to='/myApplied' >Check Status</Link></button>
                                     </div>
                                 </div>
                             </div>
@@ -203,6 +207,23 @@ const JobDetailsComponent = () => {
                         <DialogActions>
                             <Button onClick={handleClose}>Disagree</Button>
                             <Button onClick={handleAgree}>Agree</Button>
+                        </DialogActions>
+                    </Dialog>
+                    <Dialog open={applyOpen} onClose={handleApplyClose} >
+                        <DialogTitle id="scroll-dialog-title">You Have Applied Successfully</DialogTitle>
+                        <DialogContent dividers>
+                            <DialogContentText>
+                                <div className="col text-start p-sm-2 p-md-1 mb-3 mb-sm-0">
+                                    <p>I <strong>{`${student.firstName} ${student.lastName} `}</strong>son of Mr. {student.fathersName} studying in class {student.classIn} {student.year} <strong>D.A.V. college, Jalandhar</strong> declares that, I will Pusue this Job/Internship with having permission for My Parents and from My College. I will complete this Internship (if) and My studies won't affect while doing this internship</p>
+                                    <a href={job.whatsappLink} target="_blank" rel="noreferrer">Join WhatsApp Group <LaunchIcon /></a>
+                                </div>
+                            </DialogContentText>
+
+
+
+                        </DialogContent>
+                        <DialogActions>
+                            <Button onClick={handleApplyClose}>OK</Button>
                         </DialogActions>
                     </Dialog>
                 </div>
