@@ -160,8 +160,13 @@ const CreateJob = () => {
 
         ));
 
+        alert.success("Job has Posted Successfully");
+        navigate("/", { replace: true });
+
     };
 
+
+    //* For Terms & Conditions Dialog Box
     const [open, setOpen] = useState(false);
     const [agree, setAgree] = useState(false);
 

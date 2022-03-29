@@ -13,7 +13,7 @@ const JobComponent = ({ job, lastDateToApply }) => {
             <div className="row align-items-start">
               <div className="col-6 col-sm-6 col-md-5 col-lg-5 col-xl-5 col-xxl-6" style={{ "borderColor": "rgb(33, 37, 41)", "margin": "2px 5px", "padding": "5px 12px", "background": "var(--bs-yellow)", "boxShadow": "1px 1px 4px rgb(111,111,112)" }}>
                 <h6 className="text-start" style={{ "margin": "0px" }}><strong>{job.companyName}</strong></h6>
-                <div className="text-start"><a href="www.google.com">{job.CompanyWebsite}</a></div>
+                <div className="text-start"><a className='text-break' target={"_blank"} href={job.CompanyWebsite}>{job.CompanyWebsite}</a></div>
               </div>
               <div className="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5 text-light align-self-center" style={{ "background": "#01ae31", "margin": "2px 5px", "marginRight": "5px", "padding": "5px 12px", "borderRadius": "4px", "boxShadow": "1px 1px 2px 0px rgb(109,106,106)" }}>
                 <h6 className="text-start" style={{ "margin": "0px" }}>

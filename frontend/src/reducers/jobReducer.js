@@ -23,7 +23,6 @@ export const jobReducer = ((state = { jobs: [] }, action) => {
                 error: action.payload,
             };
         case CLEAR_ERRORS:
-            console.log("Yes error");
             return {
                 ...state,
                 error: null

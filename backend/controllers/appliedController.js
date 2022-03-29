@@ -11,6 +11,22 @@ exports.newJobApply = catchAsyncErrors(async (req, res, next) => {
 
     const { appliedJobs } = req.body;
 
+    const whoApplied = await JobApplied.find({ appliedJobs: { $elemMatch: { job: mongoose.Types.ObjectId(appliedJobs.job) } } });
+    let isApplied = false;
+    if (whoApplied) {
+        isApplied = whoApplied.map((element) => {
+            if (element.student.toString() === req.student._id.toString()) {
+                return true;
+            } else {
+                return false;
+            }
+        });
+    }
+
+    if (isApplied.includes(true)) {
+        return next(new ErrorHandler("You Have Already Applied", 404));
+    }
+
     const jobApplied = await JobApplied.create({
         appliedJobs,
         student: req.student._id,
@@ -19,7 +35,7 @@ exports.newJobApply = catchAsyncErrors(async (req, res, next) => {
 
     res.status(201).json({
         success: true,
-        jobApplied
+        jobApplied,
     });
 
 });

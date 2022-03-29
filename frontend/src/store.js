@@ -2,17 +2,28 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { jobDetailsReducer, jobReducer } from './reducers/jobReducer';
-import { studentReducer, updateStudentProfileReducer } from './reducers/studentReducer';
+import { forgotPasswordReducer, studentReducer, updateStudentProfileReducer } from './reducers/studentReducer';
+import { addToAppliedReducer, applyToNewJobReducer } from './reducers/appliedReducer';
 
 const reducer = combineReducers({
     jobReducer: jobReducer,
     jobDetailsReducer: jobDetailsReducer,
     studentReducer: studentReducer,
-    updateStudentProfileReducer: updateStudentProfileReducer
+    updateStudentProfileReducer: updateStudentProfileReducer,
+    forgotPasswordReducer: forgotPasswordReducer,
+    applyToNewJobReducer: applyToNewJobReducer,
+    addToAppliedReducer: addToAppliedReducer
 
 });
 
-const initialState = {};
+const initialState = {
+    addToAppliedReducer: {
+        appliedJobs: localStorage.getItem("appliedJobs")
+            ? JSON.parse(localStorage.getItem("appliedJobs"))
+            : [],
+    }
+};
+
 
 const middleWare = [thunk,];
 
