@@ -37,7 +37,8 @@ const UserOptions = ({ student, isAuthenticated, error }) => {
         }
     };
     const dashboard = () => {
-        navigate('/dashboard', { replace: true });
+        navigate('/admin/dashboard', { replace: true });
+        navigate('/admin/dashboard', { replace: true });
     };
 
     const options = [

@@ -1,6 +1,7 @@
 .speedDial{
+    z-index: 1500;
     position: fixed;
-    right: 4vmax;
+    right: 2.6vmax;
     top: 10vmax;
 }
 .speedDialIcon{
@@ -11,19 +12,19 @@
 
 @media screen and (min-width: 992px) {
     .speedDial{
-        right: 3vmax;
-        top: 1vmax;
+        right: 2.6vmax;
+        top: 0.6vmax;
     }
   }
 @media (min-width: 740px) and (max-width: 992px) {
     .speedDial{
-        right: 3vmax;
+        right: 2.5vmax;
         top: 8vmax;
     }
   }
 @media (min-width: 600px) and (max-width: 740px) {
     .speedDial{
-        right: 4vmax;
+        right: 2.6vmax;
         top: 8vmax;
     }
   }

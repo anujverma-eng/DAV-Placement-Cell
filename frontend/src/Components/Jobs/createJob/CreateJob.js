@@ -18,6 +18,14 @@ const CreateJob = () => {
     const alert = useAlert();
     const navigate = useNavigate();
 
+    const { error, isAuthenticated, student } = useSelector((state) => state.studentReducer);
+
+    useEffect(() => {
+        if (student && student.role === 'student') {
+            navigate('/', { replace: true });
+        }
+    });
+
     const [classFor, setClassFor] = useState({
         BCA: "",
         BBA: "",

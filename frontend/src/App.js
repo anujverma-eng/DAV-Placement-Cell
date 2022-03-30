@@ -1,13 +1,12 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.min.js';
 import './App.css';
 import Navbar from './Components/Layouts/Navbar/Navbar';
 import Footer from './Components/Layouts/Footer/Footer';
 import Home from './Components/Home/Home';
 import webFont from 'webfontloader';
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { BrowserRouter as Router, Routes, Route, Navigate, Link } from 'react-router-dom';
-import JobDetailsComponent from './Components/Jobs/JobDetails/jobDetailsComponent';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import LoginComponent from './Components/User/LoginSignUp/LoginComponent';
 import SignUpComponent from './Components/User/LoginSignUp/SignUpComponent';
 import store from './store';
@@ -20,8 +19,8 @@ import ProtectedUpdateRoute from './Components/Protected Routes/ProtectedUpdateR
 import UpdatePassword from './Components/User/UpdatePassword/UpdatePassword';
 import ResetPassword from './Components/User/ResetPassword/ResetPassword';
 import ProtectedRouteMyApplied from './Components/Protected Routes/ProtectedRouteMyApplied';
-import Loader from './Components/Layouts/Loader/Loader';
 import ProtectedJobDetailsRoute from './Components/Protected Routes/ProtectedJobDetailsRoute';
+import AdminProtectedDashboard from './Components/Protected Routes/AdminProtection/AdminProtectedDashboard';
 
 function App() {
   const { isAuthenticated, student, error } = useSelector((state) => state.studentReducer);
@@ -52,6 +51,7 @@ function App() {
         <Route exact path='/profile/update' element={<ProtectedUpdateRoute isAuthenticated={isAuthenticated} />} />
         <Route exact path='/password/forgot' element={<UpdatePassword />} />
         <Route exact path='/password/reset/:token' element={<ResetPassword />} />
+        <Route exact path='admin/dashboard' element={<AdminProtectedDashboard isAuthenticated={isAuthenticated} error={error} student={student} />} />
       </Routes>
       <Footer />
     </Router>

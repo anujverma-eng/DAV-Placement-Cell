@@ -1,10 +1,28 @@
 import React from 'react';
 import './Footer.css';
-import { BrowserRouter as Router, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 
 const Footer = () => {
+  const location = useLocation();
+
+  const isAdmin = location.pathname.toString().includes("admin");
+  const isLogin = location.pathname.toString().includes("login");
+
+
+
+  let displayNavbar = "block";
+  if (isAdmin) {
+    displayNavbar = "none";
+  } else if (isLogin) {
+    displayNavbar = "none";
+  } else {
+    displayNavbar = "block";
+  }
+
   return (
-    <div className='navbar'>
+    <div className='navbar' style={{ display: displayNavbar }}>
       <div >
         <ul className='item'>
           <li><a href="/">Footer</a></li>
