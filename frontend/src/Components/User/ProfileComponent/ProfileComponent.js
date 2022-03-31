@@ -12,10 +12,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { loadStudent, updateStudentPassword } from '../../../actions/studentAction';
 import { UPDATE_PASSWORD_RESET } from '../../../constants/studentConstants';
 
-const ProfileComponent = ({ isAuthenticated, loading, student }) => {
+const ProfileComponent = () => {
     const alert = useAlert();
     const dispatch = useDispatch();
-
+    const { isAuthenticated, loading, student } = useSelector((state) => state.studentReducer);
     const { error, isUpdated } = useSelector((state) => state.updateStudentProfileReducer);
 
     //* UseEffect is for UpdatePassword.

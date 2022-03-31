@@ -2,21 +2,21 @@ import React, { Fragment } from 'react';
 import NotFound from '../../Layouts/Not Found/NotFound';
 import Loader from '../../Layouts/Loader/Loader';
 import LoginComponent from '../../User/LoginSignUp/LoginComponent';
-import Dashboard from '../../Admin Components/Dashboard/Dashboard';
+import Sidebar from '../../Admin Components/Sidebar/Sidebar';
 
-const AdminProtectedDashboard = ({ isAuthenticated, loading, student }) => {
-    if (isAuthenticated === undefined) {
+const AdminProtection = (props) => {
+    if (props.isAuthenticated === undefined) {
         return (
             <Loader />
         );
     } else {
-        if (isAuthenticated === true) {
+        if (props.isAuthenticated === true) {
 
-            if (student.role === 'admin') {
+            if (props.student.role === 'admin') {
                 return (
                     <Fragment>
-                        {!loading && (
-                            <Dashboard />
+                        {!props.loading && (
+                            <Sidebar element={props.element} />
                         )}
                     </Fragment>
                 );
@@ -36,4 +36,4 @@ const AdminProtectedDashboard = ({ isAuthenticated, loading, student }) => {
     }
 };
 
-export default AdminProtectedDashboard;
+export default AdminProtection;

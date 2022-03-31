@@ -15,12 +15,14 @@ import CreateJob from './Components/Jobs/createJob/CreateJob';
 import { useSelector } from 'react-redux';
 import UserOptions from './Components/Layouts/UserOptions/UserOptions.js';
 import ProtectedRoute from './Components/Protected Routes/ProtectedRoute';
-import ProtectedUpdateRoute from './Components/Protected Routes/ProtectedUpdateRoute';
+import JobDetailsComponent from './Components/Jobs/JobDetails/jobDetailsComponent';
 import UpdatePassword from './Components/User/UpdatePassword/UpdatePassword';
 import ResetPassword from './Components/User/ResetPassword/ResetPassword';
-import ProtectedRouteMyApplied from './Components/Protected Routes/ProtectedRouteMyApplied';
-import ProtectedJobDetailsRoute from './Components/Protected Routes/ProtectedJobDetailsRoute';
-import AdminProtectedDashboard from './Components/Protected Routes/AdminProtection/AdminProtectedDashboard';
+import AdminProtection from './Components/Protected Routes/AdminProtection/AdminProtection';
+import Dashboard from './Components/Admin Components/Dashboard/Dashboard';
+import ProfileComponent from './Components/User/ProfileComponent/ProfileComponent';
+import MyApplied from './Components/User/MyApplied/MyApplied';
+import UpdateProfileComponent from './Components/User/ProfileComponent/UpdateProfileComponent';
 
 function App() {
   const { isAuthenticated, student, error } = useSelector((state) => state.studentReducer);
@@ -42,16 +44,19 @@ function App() {
       {!isAuthenticated && <Link to={'login'} />}
       <Routes>
         <Route exact path='/' element={<Home />} />
-        <Route exact path='/job/:id' element={<ProtectedJobDetailsRoute isAuthenticated={isAuthenticated} error={error} student={student} />} />
         <Route exact path='/login' element={<LoginComponent />} />
         <Route exact path='/register' element={<SignUpComponent />} />
         <Route exact path='/new/job' element={<CreateJob />} />
-        <Route exact path='/account' element={<ProtectedRoute isAuthenticated={isAuthenticated} error={error} student={student} />} />
-        <Route exact path='/myApplied' element={<ProtectedRouteMyApplied isAuthenticated={isAuthenticated} error={error} student={student} />} />
-        <Route exact path='/profile/update' element={<ProtectedUpdateRoute isAuthenticated={isAuthenticated} />} />
+
+        <Route exact path='/job/:id' element={<ProtectedRoute isAuthenticated={isAuthenticated} error={error} element={<JobDetailsComponent />} />} />
+        <Route exact path='/account' element={<ProtectedRoute isAuthenticated={isAuthenticated} error={error} element={<ProfileComponent />} />} />
+        <Route exact path='/myApplied' element={<ProtectedRoute isAuthenticated={isAuthenticated} error={error} element={<MyApplied />} />} />
+        <Route exact path='/profile/update' element={<ProtectedRoute isAuthenticated={isAuthenticated} error={error} element={<UpdateProfileComponent />} />} />
+
+
         <Route exact path='/password/forgot' element={<UpdatePassword />} />
         <Route exact path='/password/reset/:token' element={<ResetPassword />} />
-        <Route exact path='admin/dashboard' element={<AdminProtectedDashboard isAuthenticated={isAuthenticated} error={error} student={student} />} />
+        <Route exact path='admin/dashboard' element={<AdminProtection isAuthenticated={isAuthenticated} error={error} student={student} element={<Dashboard />} />} />
       </Routes>
       <Footer />
     </Router>

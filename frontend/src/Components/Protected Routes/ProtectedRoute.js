@@ -1,20 +1,19 @@
 import React, { Fragment } from 'react';
 import Loader from '../Layouts/Loader/Loader';
 import LoginComponent from '../User/LoginSignUp/LoginComponent';
-import ProfileComponent from '../User/ProfileComponent/ProfileComponent';
 
-const ProtectedRoute = ({ isAuthenticated, loading, student }) => {
+const ProtectedRoute = (props) => {
 
-    if (isAuthenticated === undefined) {
+    if (props.isAuthenticated === undefined) {
         return (
             <Loader />
         );
     } else {
-        if (isAuthenticated === true) {
+        if (props.isAuthenticated === true) {
             return (
                 <Fragment>
-                    {!loading && (
-                        <ProfileComponent isAuthenticated={isAuthenticated} loading={loading} student={student} />
+                    {!props.loading && (
+                        props.element
                     )}
                 </Fragment>
             );
