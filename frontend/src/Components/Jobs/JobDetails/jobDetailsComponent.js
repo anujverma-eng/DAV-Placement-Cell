@@ -12,6 +12,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Button from '@mui/material/Button';
+import Moment from 'react-moment';
 import { myApplied, newJobApplied } from '../../../actions/appliedAction';
 import LaunchIcon from '@mui/icons-material/Launch';
 
@@ -26,10 +27,6 @@ const JobDetailsComponent = () => {
     const { message } = useSelector((state) => state.applyToNewJobReducer);
     const { jobApplied } = useSelector((state) => state.myAppliedReducer);
 
-    let lastDateToApply = "";
-    if (job.lastDateToApply !== undefined) {
-        lastDateToApply = new Date(job.lastDateToApply).toDateString();
-    }
 
     useEffect(() => {
         if (error) {
@@ -80,8 +77,8 @@ const JobDetailsComponent = () => {
 
 
     const alreadyAppliedJobsID = [];
-    jobApplied && jobApplied.forEach((element, idx) => {
-        alreadyAppliedJobsID.push(element.appliedJobs[0].job._id);
+    jobApplied && jobApplied.forEach((job, idx) => {
+        alreadyAppliedJobsID.push(job.appliedJobs[0].job._id);
     });
 
     const handleApplyNow = () => {
@@ -127,14 +124,14 @@ const JobDetailsComponent = () => {
                                 <div style={{ marginBottom: "8px", padding: "5px" }}>
                                     <h1>{job.jobRole}</h1>
                                 </div>
-                                <div className="text-end"><span style={{ margin: "5px" }}>Last Date To Apply</span><span className="text-danger" style={{ margin: "5px" }}><strong>{lastDateToApply}</strong></span></div>
+                                <div className="text-end"><span style={{ margin: "5px" }}>Last Date To Apply</span><span className="text-danger" style={{ margin: "5px" }}><strong><Moment format='D MMM YYYY, hh:mm'>{job.lastDateToApply && job.lastDateToApply}</Moment></strong></span></div>
                                 <div style={{ marginBottom: "8px", padding: "5px" }}>
                                     <div className="row">
                                         <div className="col" style={{ background: "var(--bs-gray-300)" }}>
                                             <div style={{ marginBottom: "8px", padding: "5px" }}><label className="form-label"><strong>Job Type</strong></label>
                                                 <div className="row">
-                                                    {job.jobType && job.jobType.map((element, i) => (
-                                                        <div key={i} className="col"><span>{element}</span></div>
+                                                    {job.jobType && job.jobType.map((job, i) => (
+                                                        <div key={i} className="col"><span>{job}</span></div>
                                                     ))}
                                                 </div>
                                             </div>
@@ -151,8 +148,8 @@ const JobDetailsComponent = () => {
                                         <div className="col" style={{ background: "#fee715", color: "rgb(16,24,32)" }}>
                                             <div style={{ marginBottom: "8px", padding: "5px" }}><label className="form-label"><strong>Eligibility</strong></label>
                                                 <div className="row">
-                                                    {job.eligibility && job.eligibility.map((element, i) => (
-                                                        <div key={i} className="col"><span>{element}</span></div>
+                                                    {job.eligibility && job.eligibility.map((job, i) => (
+                                                        <div key={i} className="col"><span>{job}</span></div>
                                                     ))}
                                                 </div>
                                             </div>
@@ -160,8 +157,8 @@ const JobDetailsComponent = () => {
                                         <div className="col" style={{ background: "var(--bs-gray-300)" }}>
                                             <div style={{ marginBottom: "8px", padding: "5px" }}><label className="form-label"><strong>Class Required</strong></label>
                                                 <div className="row">
-                                                    {job.class && job.class.map((element, i) => (
-                                                        <div key={i} className="col"><span>{element}</span></div>
+                                                    {job.class && job.class.map((job, i) => (
+                                                        <div key={i} className="col"><span>{job}</span></div>
                                                     ))}
                                                 </div>
                                             </div>

@@ -7,6 +7,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Button from '@mui/material/Button';
+import Moment from 'react-moment';
 import { useAlert } from 'react-alert';
 import { useSelector, useDispatch } from 'react-redux';
 import { loadStudent, updateStudentPassword } from '../../../actions/studentAction';
@@ -33,14 +34,6 @@ const ProfileComponent = () => {
         }
     }, [dispatch, alert, isUpdated, error]);
 
-
-    //* This DOB is for Profile view
-    let dateOfBirth;
-    let createdAt;
-    if (student) {
-        dateOfBirth = new Date(student.dateOfBirth).toDateString();
-        createdAt = new Date(student.createdAt).toDateString();
-    }
 
     //* On Open & passwords is for Update Password Dialog Box.
     const [open, setOpen] = useState(false);
@@ -114,7 +107,7 @@ const ProfileComponent = () => {
                                 <div className="fs-6 d-flex gap-2 align-items-center" style={{ marginBottom: 5 }}><i className="fa fa-map-marker" style={{ marginBottom: 5 }} /><span style={{ marginBottom: 5 }}>{student.address}</span></div>
                             </div>
                             <div className="col-md-6 col-lg-5 col-xl-5 col-xxl-5" style={{ marginBottom: 5 }}>
-                                <div className="fs-6 d-flex gap-2 align-items-center" style={{ marginBottom: 5 }}><i className="fa fa-calendar" style={{ marginBottom: 5 }} /><span style={{ marginBottom: 5 }}>{dateOfBirth}</span></div>
+                                <div className="fs-6 d-flex gap-2 align-items-center" style={{ marginBottom: 5 }}><i className="fa fa-calendar" style={{ marginBottom: 5 }} /><span style={{ marginBottom: 5 }}><Moment format='D MMM YYYY'>{student.dateOfBirth && student.dateOfBirth}</Moment></span></div>
                             </div>
                             <div className="col-md-6 col-lg-5 col-xl-5 col-xxl-5" style={{ marginBottom: 5 }}>
                                 <div className="fs-6 d-flex gap-2 align-items-center" style={{ marginBottom: 5 }}><i className="fa fa-calendar" style={{ marginBottom: 5 }} /><span style={{ marginBottom: 5 }}>{student.classRollNo}</span></div>
@@ -123,10 +116,10 @@ const ProfileComponent = () => {
                                 <div className="fs-6 d-flex gap-2 align-items-center" style={{ marginBottom: 5 }}><i className="fa fa-calendar" style={{ marginBottom: 5 }} /><span style={{ marginBottom: 5 }}>{student.universityRollno}</span></div>
                             </div>
                             <div className="col-md-6 col-lg-5 col-xl-5 col-xxl-5" style={{ marginBottom: 5 }}>
-                                <div className="fs-6 d-flex gap-2 align-items-center" style={{ marginBottom: 5 }}><i className="fa fa-link" style={{ marginBottom: 5 }} /><a className="text-decoration-none" href="#" style={{ color: 'rgb(255,255,255)', marginBottom: 5 }}>{student.linkedInURL ? student.linkedInURL : "Not added"}</a></div>
+                                <div className="fs-6 d-flex gap-2 align-items-center" style={{ marginBottom: 5 }}><i className="fa fa-link" style={{ marginBottom: 5 }} /><a target={"_blank"} rel="noopener noreferrer" className="text-decoration-none" href={student.linkedInURL && student.linkedInURL} style={{ color: 'rgb(255,255,255)', marginBottom: 5 }}>{student.linkedInURL ? student.linkedInURL : "Not added"}</a></div>
                             </div>
                             <div className="col-md-6 col-lg-5 col-xl-5 col-xxl-5" style={{ marginBottom: 5 }}>
-                                <div className="fs-6 d-flex gap-2 align-items-center" style={{ marginBottom: 5 }}><i className="fa fa-link" /><a className="text-decoration-none" href="#" style={{ color: 'rgb(255,255,255)' }}>{student.socialLink ? student.socialLink : "Not added"}</a></div>
+                                <div className="fs-6 d-flex gap-2 align-items-center" style={{ marginBottom: 5 }}><i className="fa fa-link" /><a target={"_blank"} rel="noopener noreferrer" className="text-decoration-none" href={student.socialLink && student.socialLink} style={{ color: 'rgb(255,255,255)' }}>{student.socialLink ? student.socialLink : "Not added"}</a></div>
                             </div>
                         </div>
                         <div className="row justify-content-center" style={{ margin: 0, padding: 10, background: 'var(--bs-gray-500)' }}>
@@ -190,7 +183,7 @@ const ProfileComponent = () => {
                         </div>
                         <div className="row justify-content-center align-items-center" style={{ color: 'rgb(255,255,255)', padding: 10, margin: 0, background: '#1d273b' }}>
                             <div className="col-md-6 col-lg-5 col-xl-5 col-xxl-5">
-                                <div className="fs-6 d-flex gap-2 align-items-center" style={{ marginBottom: 5 }}><span style={{ marginBottom: 5 }}>{`Joined On : ${createdAt}`}</span></div>
+                                <div className="fs-6 d-flex gap-2 align-items-center" style={{ marginBottom: 5 }}><span style={{ marginBottom: 5 }}>Joined On: <Moment format='D MMM YYYY, hh:mm'>{student.createdAt && student.createdAt}</Moment></span></div>
                             </div>
                             <div className="col-md-6 col-lg-5 col-xl-5 col-xxl-5 d-flex gap-4" style={{ marginBottom: 5 }}>
                                 <div style={{ marginBottom: 8 }}><button className="btn btn-danger" type="button" onClick={handleClickOpen}><i className="fa fa-edit" />Change Password</button></div>
