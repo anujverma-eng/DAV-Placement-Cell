@@ -103,7 +103,7 @@ const PendingJobs = () => {
                 jobs.map((element, idx) =>
                 (<div className="row align-items-center bg-light" style={{ boxShadow: '1.2px 1px 2px 1px rgb(187,187,190)', marginBottom: 18 }} key={idx}>
                   <div className="col">
-                    <div className="d-inline"><i className="fa fa-circle text-center text-success" style={{ fontSize: 10, padding: 2 }} /><label className="form-label text-danger" style={{ margin: 0 }}>Live</label></div>
+                    <div className="d-inline"><i className="fa fa-circle text-center text-danger" style={{ fontSize: 10, padding: 2 }} /><label className="form-label text-danger" style={{ margin: 0 }}>Pending</label></div>
                     <div className="row">
                       <div className="col-lg-6 col-xl-5" style={{ paddingBottom: 5 }}>
                         <h3 className="text-primary"><strong>{element.companyName}</strong></h3>
