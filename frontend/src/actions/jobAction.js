@@ -105,13 +105,13 @@ export const getAdminJobs = (keyword, mustDelete) => async (dispatch) => {
         dispatch({
             type: ADMIN_JOB_REQUEST
         });
-        if (!keyword) {
-            console.log("Please Enter Approved/Rejected as parameters to getAdminJbs function");
-            return;
-        }
         let link = `/api/v1/jobs?approve_reject=${keyword}`;
         if (mustDelete) {
             link = `/api/v1/jobs?approve_reject=${keyword}&lastDateToApply[lt]=${Date.now()}`;
+        }
+        if (keyword === false && mustDelete) {
+            link = `/api/v1/jobs?lastDateToApply[lt]=${Date.now()}`;
+
         }
         const { data } = await axios.get(link);
 

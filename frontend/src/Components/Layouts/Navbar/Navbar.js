@@ -37,7 +37,7 @@ const Navbar = () => {
             {(!student || (student && student.role === 'admin')) && <li className="nav-item"><Link className="nav-link" to="/new/job">Post Job</Link></li>}
             {!student && <li className="nav-item"><Link className="nav-link" to="/login">Login</Link></li>}
             <li className="nav-item"><a href='/login' className="nav-link" style={{ cursor: "pointer" }} onClick={(e) => { logoutMe(); }}>Logout</a></li>
-            {student && student.role === 'admin' ? <li className="nav-item"><Link to={'/admin/approvedjobs'} className="nav-link" style={{ cursor: "pointer" }} >Approved Jobs</Link></li> : <li />}
+            {student && student.role === 'admin' ? <li className="nav-item"><Link to={'/admin/dashboard'} className="nav-link" style={{ cursor: "pointer" }} >Dashboard</Link></li> : <li />}
           </ul>
         </div>
       </div>

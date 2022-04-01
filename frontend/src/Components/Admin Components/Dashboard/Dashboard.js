@@ -153,7 +153,7 @@ const Dashboard = () => {
                     </div>
                     <div id="content">
                         <div className="container-fluid">
-                            {jobs ?
+                            {(jobs && jobs.length !== 0) ?
                                 jobs.map((element, idx) =>
                                 (<div className="row align-items-center bg-light" style={{ boxShadow: '1.2px 1px 2px 1px rgb(187,187,190)', marginBottom: 18 }} key={idx}>
                                     <div className="col">
