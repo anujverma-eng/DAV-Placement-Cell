@@ -1,7 +1,7 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { jobDetailsReducer, jobReducer } from './reducers/jobReducer';
+import { adminDeleteUpdateJobReducer, adminJobReducer, jobDetailsReducer, jobReducer } from './reducers/jobReducer';
 import { forgotPasswordReducer, studentReducer, updateStudentProfileReducer } from './reducers/studentReducer';
 import { applyToNewJobReducer, myAppliedReducer } from './reducers/appliedReducer';
 
@@ -12,7 +12,9 @@ const reducer = combineReducers({
     updateStudentProfileReducer: updateStudentProfileReducer,
     forgotPasswordReducer: forgotPasswordReducer,
     applyToNewJobReducer: applyToNewJobReducer,
-    myAppliedReducer: myAppliedReducer
+    myAppliedReducer: myAppliedReducer,
+    adminJobReducer: adminJobReducer,
+    adminDeleteUpdateJobReducer: adminDeleteUpdateJobReducer
 
 });
 

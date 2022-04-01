@@ -1,23 +1,96 @@
-import React, { Fragment, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import React, { Fragment, useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Metadata from '../../Layouts/Metadata';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import Moment from 'react-moment';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import Button from '@mui/material/Button';
+
 import Loader from '../../Layouts/Loader/Loader';
 import { useAlert } from 'react-alert';
+import { clearErrors, deleteJob, fewUpdatesInJob, getAdminJobs } from '../../../actions/jobAction';
+import { ADMIN_DELETE_JOB_RESET } from '../../../constants/jobConstants';
 
 const Dashboard = () => {
 
-    const { loading, error, jobs, jobsCount } = useSelector((state) => state.jobReducer);
+    const dispatch = useDispatch();
+    const { loading, error, jobs, jobsCount } = useSelector((state) => state.adminJobReducer);
+    const jobDeleteUpdateReducer = useSelector((state) => state.adminDeleteUpdateJobReducer);
 
     const alert = useAlert();
+    const [open, setOpen] = useState(false);
+    const [editOpen, setEditOpen] = useState(false);
+    const [jobId, setJobId] = useState(false);
+    const [status, setStatus] = useState("Approved");
+    const [lastDateToApply, setLastDateToApply] = useState("");
+    const [whatsappLink, setWhatsappLink] = useState("");
 
     useEffect(() => {
         if (error) {
             alert.error(error);
         }
-    });
+        if (jobDeleteUpdateReducer.error) {
+            alert.error(jobDeleteUpdateReducer.error);
+        }
+        jobDeleteUpdateReducer.isDeleted && alert.success("Deleted Successfully");
+        jobDeleteUpdateReducer.isUpdated && alert.success("Successfully Updated");
+        dispatch(clearErrors());
+        dispatch({ type: ADMIN_DELETE_JOB_RESET });
+        dispatch(getAdminJobs("Approved", false));
+    }, [dispatch, error, alert, jobDeleteUpdateReducer.error, jobDeleteUpdateReducer.isDeleted, jobDeleteUpdateReducer.isUpdated]);
+
+
+    const handleDelete = (id) => {
+        setOpen(true);
+        setJobId(id);
+
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+        setEditOpen(false);
+    };
+
+    const handleDeleteYES = () => {
+        setOpen(false);
+        if (jobId) {
+            dispatch(deleteJob(jobId));
+        }
+    };
+
+    const statusSelected = (e) => {
+        setStatus(e.target.value);
+    };
+    const lastDateSelected = (e) => {
+        setLastDateToApply(e.target.value);
+    };
+    const whatsAppLinkSelected = (e) => {
+        setWhatsappLink(e.target.value);
+    };
+    const handleEdit = (id, whatsAppLinkGP, lastDateToApplyElement) => {
+        setEditOpen(true);
+        setJobId(id);
+        setWhatsappLink(whatsAppLinkGP);
+        lastDateToApplyElement && setLastDateToApply(new Date(lastDateToApplyElement).toISOString().slice(0, 10));
+    };
+
+    const handleUpdateDialog = () => {
+        setEditOpen(false);
+        if (jobId) {
+            dispatch(fewUpdatesInJob(jobId, status, lastDateToApply, whatsappLink));
+        }
+    };
+
+
 
     return (
         <Fragment>
@@ -31,7 +104,7 @@ const Dashboard = () => {
                                     <div className="row align-items-center no-gutters">
                                         <div className="col me-2">
                                             <div className="text-uppercase text-primary fw-bold text-xs mb-1"><span>Live jobs</span></div>
-                                            <div className="text-dark fw-bold h5 mb-0"><span>{jobs.length}</span></div>
+                                            <div className="text-dark fw-bold h5 mb-0"><span>{jobs && jobs.length}</span></div>
                                         </div>
                                         <div className="col-auto"><i className="fas fa-broadcast-tower fa-2x text-gray-300" /></div>
                                     </div>
@@ -108,7 +181,10 @@ const Dashboard = () => {
                                                 <div><label className="form-label">Created At</label><span style={{ marginLeft: 8 }}><br /><strong><Moment format='D MMM YYYY, hh:mm'>{element.createdAt && element.createdAt}</Moment></strong></span></div>
                                                 <div><label className="form-label">ID</label><span style={{ marginLeft: 8 }}><br /><strong>{element._id}</strong></span></div>
                                                 <div className="text-success"><label className="form-label">Selected</label><span className="text-danger" style={{ marginLeft: 8 }}><strong>8</strong></span></div>
-                                                <div className="d-flex gap-3"><button className="btn btn-danger" type="button"><DeleteForeverIcon /></button><button className="btn btn-primary" type="button"><EditIcon /></button></div>
+                                                <div className="d-flex gap-3">
+                                                    <button onClick={(e) => handleDelete(element._id)} className="btn btn-danger" type="button"><DeleteForeverIcon /></button>
+                                                    <button onClick={(e) => handleEdit(element._id, element.whatsappLink, element.lastDateToApply)} className="btn btn-primary" type="button"><EditIcon /></button>
+                                                </div>
                                                 <hr className="d-block d-md-none" />
                                             </div>
                                         </div>
@@ -120,10 +196,55 @@ const Dashboard = () => {
                             }
                         </div>
                     </div>
+
+                    <Dialog open={open} onClose={handleClose} fullWidth>
+                        <DialogTitle>Delete Job</DialogTitle>
+                        <DialogContent>
+                            <DialogContentText>
+                                Are you sure you want to delete this job ?
+                            </DialogContentText>
+                        </DialogContent>
+                        <DialogActions>
+                            <Button onClick={handleClose}>No</Button>
+                            <Button onClick={handleDeleteYES}>Yes</Button>
+                        </DialogActions>
+                    </Dialog>
+
+                    <Dialog open={editOpen} onClose={handleClose} fullWidth>
+                        <DialogTitle>Update Job</DialogTitle>
+                        <DialogContent>
+                            <FormControl fullWidth>
+                                <InputLabel id="demo-simple-select-label">Status</InputLabel>
+                                <Select
+                                    labelId="demo-simple-select-label"
+                                    id="demo-simple-select"
+                                    value={status}
+                                    label="Status"
+                                    onChange={statusSelected}
+                                >
+                                    <MenuItem value={"Approved"}>Approved</MenuItem>
+                                    <MenuItem value={"Rejected"}>Rejected</MenuItem>
+
+                                </Select>
+                                <div className="col-11 col-sm-3 col-md-4 col-lg-5 col-xl-5 col-xxl-5 text-start p-sm-2 p-md-1 mb-3 mb-sm-0"><label className="form-label p-sm-2 p-md-1 m-1" htmlFor="lastDateToApply"><strong>Last Date to Apply</strong><br /></label>
+                                    <input onChange={lastDateSelected} value={lastDateToApply} placeholder="Last Date" className="form-control p-sm-2 p-md-1" name="lastDateToApply" type="date" />
+                                </div>
+                                <div className="col-11 col-sm-12 col-md-6 col-lg-5 col-xl-5 col-xxl-5 text-start p-sm-2 p-md-1 mb-3 mb-sm-0"><label className="form-label p-sm-2 p-md-1 d-none d-sm-flex" htmlFor="companyWebsite"><strong>Whatsapp Group</strong><br /></label>
+                                    <input className="shadow-sm form-control p-sm-2 p-md-1" type="url" placeholder="Whatsapp Link Update" onChange={whatsAppLinkSelected} value={whatsappLink} name="whatsappLink" required inputMode="url" title="Whatsapp Group Link" />
+                                </div>
+                            </FormControl>
+                        </DialogContent>
+                        <DialogActions>
+                            <Button onClick={handleClose}>Close</Button>
+                            <Button onClick={handleUpdateDialog}>Update</Button>
+                        </DialogActions>
+                    </Dialog>
+
+
                 </div>
             }
 
-        </Fragment>
+        </Fragment >
     );
 };
 
