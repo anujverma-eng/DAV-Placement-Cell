@@ -37,14 +37,14 @@ const Dashboard = () => {
     useEffect(() => {
         if (error) {
             alert.error(error);
+            dispatch(clearErrors());
         }
         if (jobDeleteUpdateReducer.error) {
             alert.error(jobDeleteUpdateReducer.error);
+            dispatch(clearErrors());
         }
-        jobDeleteUpdateReducer.isDeleted && alert.success("Deleted Successfully");
         jobDeleteUpdateReducer.isUpdated && alert.success("Successfully Updated");
-        dispatch(clearErrors());
-        dispatch({ type: ADMIN_DELETE_JOB_RESET });
+        jobDeleteUpdateReducer.isDeleted && alert.success("Deleted Successfully");
         dispatch(getAdminJobs("Approved", false));
     }, [dispatch, error, alert, jobDeleteUpdateReducer.error, jobDeleteUpdateReducer.isDeleted, jobDeleteUpdateReducer.isUpdated]);
 
