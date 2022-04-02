@@ -44,7 +44,7 @@ exports.whoAppliedOnThisJob = catchAsyncErrors(async (req, res, next) => {
 
     // db.jobapplieds.find({appliedJobs:{$elemMatch:{job:ObjectId("6232e02ca8c43195efc7af55")}}})
 
-    const jobApplied = await JobApplied.find({ appliedJobs: { $elemMatch: { job: mongoose.Types.ObjectId(req.params.id) } } });
+    const jobApplied = await JobApplied.find({ appliedJobs: { $elemMatch: { job: mongoose.Types.ObjectId(req.params.id) } } }).populate({ path: 'appliedJobs.job', select: 'companyName jobRole jobType salaryPM lastDateToApply whatsappLink' }).populate({ path: 'student', select: 'firstName lastName classIn year phone email class10 class12 graduation about objective address dateOfBirth linkedInURL socialLink classRollNo universityRollno createdAt skills experience projects avatar' });
 
     res.status(200).json({
         success: true,
@@ -108,10 +108,6 @@ exports.updateApplied = catchAsyncErrors(async (req, res, next) => {
 
     if (!jobApplied) {
         return next(new ErrorHandler("Nothing Found", 400));
-    }
-
-    if (jobApplied.interviewStatus === 'Selected') {
-        return next(new ErrorHandler("The Student is Already Selected", 400));
     }
 
     jobApplied.interviewStatus = req.body.interviewStatus;

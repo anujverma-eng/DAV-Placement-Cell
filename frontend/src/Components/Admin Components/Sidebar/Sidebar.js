@@ -51,6 +51,9 @@ const Sidebar = (props) => {
     const notSelectedStudents = () => {
         navigate('/admin/students/notSelected', { replace: true });
     };
+    const whoApplied = () => {
+        navigate('/admin/get/candidates', { replace: true });
+    };
 
 
     const drawer = (
@@ -70,6 +73,10 @@ const Sidebar = (props) => {
                 <ListItemButton onClick={mustDeleteJobs}>
                     <ListItemIcon> <InboxIcon /> </ListItemIcon>
                     <ListItemText primary="Must Delete Jobs" />
+                </ListItemButton>
+                <ListItemButton onClick={whoApplied}>
+                    <ListItemIcon> <InboxIcon /> </ListItemIcon>
+                    <ListItemText primary="Get Candidates" />
                 </ListItemButton>
             </List>
             <Divider />

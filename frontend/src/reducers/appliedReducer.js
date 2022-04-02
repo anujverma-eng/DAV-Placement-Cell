@@ -3,7 +3,7 @@ import {
     CLEAR_ERRORS, MY_APPLIED_REQUEST, MY_APPLIED_SUCCESS, MY_APPLIED_FAIL,
     ADMIN_ALL_APPLIED_REQUEST, ADMIN_ALL_APPLIED_SUCCESS, ADMIN_ALL_APPLIED_FAIL,
     ADMIN_UPDATE_APPLIED_REQUEST, ADMIN_UPDATE_APPLIED_SUCCESS, ADMIN_UPDATE_APPLIED_FAIL,
-    ADMIN_DELETE_APPLIED_REQUEST, ADMIN_DELETE_APPLIED_SUCCESS, ADMIN_DELETE_APPLIED_FAIL, ADMIN_DELETE_APPLIED_RESET
+    ADMIN_DELETE_APPLIED_REQUEST, ADMIN_DELETE_APPLIED_SUCCESS, ADMIN_DELETE_APPLIED_FAIL, ADMIN_DELETE_APPLIED_RESET, ADMIN_JOB_WHO_APPLIED_REQUEST, ADMIN_JOB_WHO_APPLIED_SUCCESS, ADMIN_JOB_WHO_APPLIED_FAIL
 } from "../constants/jobAppliedConstants";
 
 
@@ -68,17 +68,20 @@ export const myAppliedReducer = (state = { applied: [] }, action) => {
 export const adminAllAppliedReducer = ((state = { jobApplied: [] }, action) => {
     switch (action.type) {
         case ADMIN_ALL_APPLIED_REQUEST:
+        case ADMIN_JOB_WHO_APPLIED_REQUEST:
             return {
                 loading: true,
                 jobApplied: []
             };
         case ADMIN_ALL_APPLIED_SUCCESS:
+        case ADMIN_JOB_WHO_APPLIED_SUCCESS:
             return {
                 loading: false,
                 jobApplied: action.payload.jobApplied,
 
             };
         case ADMIN_ALL_APPLIED_FAIL:
+        case ADMIN_JOB_WHO_APPLIED_FAIL:
             return {
                 loading: false,
                 error: action.payload,

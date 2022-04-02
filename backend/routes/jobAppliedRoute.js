@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.route('/jobApplied/new').post(isAuthenticatedUser, newJobApply);
 
-// router.route('/jobApplied/students/:id').get(isAuthenticatedUser, whoAppliedOnThisJob);
+router.route('/jobApplied/job/:id').get(isAuthenticatedUser, whoAppliedOnThisJob);
 
 // router.route('/jobApplied/me/:id').get(isAuthenticatedUser, getJobsWhereIHaveApplied);
 

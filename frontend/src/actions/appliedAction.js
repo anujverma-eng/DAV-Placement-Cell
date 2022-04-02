@@ -3,7 +3,8 @@ import {
     CLEAR_ERRORS, MY_APPLIED_REQUEST, MY_APPLIED_SUCCESS, MY_APPLIED_FAIL,
     ADMIN_ALL_APPLIED_REQUEST, ADMIN_ALL_APPLIED_SUCCESS, ADMIN_ALL_APPLIED_FAIL,
     ADMIN_UPDATE_APPLIED_REQUEST, ADMIN_UPDATE_APPLIED_SUCCESS, ADMIN_UPDATE_APPLIED_FAIL,
-    ADMIN_DELETE_APPLIED_REQUEST, ADMIN_DELETE_APPLIED_SUCCESS, ADMIN_DELETE_APPLIED_FAIL, ADMIN_DELETE_APPLIED_RESET
+    ADMIN_DELETE_APPLIED_REQUEST, ADMIN_DELETE_APPLIED_SUCCESS, ADMIN_DELETE_APPLIED_FAIL, ADMIN_DELETE_APPLIED_RESET,
+    ADMIN_JOB_WHO_APPLIED_REQUEST, ADMIN_JOB_WHO_APPLIED_SUCCESS, ADMIN_JOB_WHO_APPLIED_FAIL
 } from "../constants/jobAppliedConstants";
 import axios from 'axios';
 
@@ -108,6 +109,29 @@ export const deleteJobApplied = (id) => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: ADMIN_DELETE_APPLIED_FAIL,
+            payload: error.response.data.message
+        });
+    }
+};
+
+export const whoAppliedJobAdmin = (id) => async (dispatch) => {
+    try {
+
+        dispatch({
+            type: ADMIN_JOB_WHO_APPLIED_REQUEST
+        });
+        const { data } = await axios.get(`/api/v1/jobApplied/job/${id}`);
+
+
+        dispatch({
+            type: ADMIN_JOB_WHO_APPLIED_SUCCESS,
+            payload: data
+        });
+
+
+    } catch (error) {
+        dispatch({
+            type: ADMIN_JOB_WHO_APPLIED_FAIL,
             payload: error.response.data.message
         });
     }
