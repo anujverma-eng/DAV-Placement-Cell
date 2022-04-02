@@ -19,7 +19,7 @@ import Select from '@mui/material/Select';
 import Button from '@mui/material/Button';
 import { ADMIN_DELETE_APPLIED_RESET } from '../../../constants/jobAppliedConstants';
 
-const AllAppliedStudents = () => {
+const AllAppliedStudentsSelected = () => {
 
     const dispatch = useDispatch();
     const alert = useAlert();
@@ -43,7 +43,7 @@ const AllAppliedStudents = () => {
         adminDeleteUpdateJobAppliedReducer.isUpdated && alert.success("Successfully Updated");
         adminDeleteUpdateJobAppliedReducer.isDeleted && alert.success("Deleted Successfully");
         dispatch({ type: ADMIN_DELETE_APPLIED_RESET });
-        dispatch(getAllAppliedAdmin("Pending"));
+        dispatch(getAllAppliedAdmin("Selected"));
     }, [dispatch, error, alert, adminDeleteUpdateJobAppliedReducer.error, adminDeleteUpdateJobAppliedReducer.isUpdated, adminDeleteUpdateJobAppliedReducer.isDeleted]);
 
 
@@ -185,4 +185,4 @@ const AllAppliedStudents = () => {
     );
 };
 
-export default AllAppliedStudents;
+export default AllAppliedStudentsSelected;

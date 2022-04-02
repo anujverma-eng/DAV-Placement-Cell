@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { adminDeleteUpdateJobReducer, adminJobReducer, jobDetailsReducer, jobReducer } from './reducers/jobReducer';
 import { adminStudentDetailsReducer, adminStudentsReducer, forgotPasswordReducer, studentReducer, updateStudentProfileReducer } from './reducers/studentReducer';
-import { adminAllAppliedReducer, applyToNewJobReducer, myAppliedReducer } from './reducers/appliedReducer';
+import { adminAllAppliedReducer, adminDeleteUpdateJobAppliedReducer, applyToNewJobReducer, myAppliedReducer } from './reducers/appliedReducer';
 
 const reducer = combineReducers({
     jobReducer: jobReducer,
@@ -17,7 +17,8 @@ const reducer = combineReducers({
     adminDeleteUpdateJobReducer: adminDeleteUpdateJobReducer,
     adminStudentsReducer: adminStudentsReducer,
     adminStudentDetailsReducer: adminStudentDetailsReducer,
-    adminAllAppliedReducer: adminAllAppliedReducer
+    adminAllAppliedReducer: adminAllAppliedReducer,
+    adminDeleteUpdateJobAppliedReducer: adminDeleteUpdateJobAppliedReducer,
 
 });
 

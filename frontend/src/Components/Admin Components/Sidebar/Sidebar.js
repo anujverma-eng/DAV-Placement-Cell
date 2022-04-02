@@ -45,6 +45,12 @@ const Sidebar = (props) => {
     const allStudents = () => {
         navigate('/admin/students/all', { replace: true });
     };
+    const selectedStudents = () => {
+        navigate('/admin/students/selected', { replace: true });
+    };
+    const notSelectedStudents = () => {
+        navigate('/admin/students/notSelected', { replace: true });
+    };
 
 
     const drawer = (
@@ -74,7 +80,15 @@ const Sidebar = (props) => {
                 </ListItemButton>
                 <ListItemButton onClick={selectionStatus}>
                     <ListItemIcon> <InboxIcon /> </ListItemIcon>
-                    <ListItemText primary="Selection Status" />
+                    <ListItemText primary="Pending Selections" />
+                </ListItemButton>
+                <ListItemButton onClick={selectedStudents}>
+                    <ListItemIcon> <InboxIcon /> </ListItemIcon>
+                    <ListItemText primary="Selected Students" />
+                </ListItemButton>
+                <ListItemButton onClick={notSelectedStudents}>
+                    <ListItemIcon> <InboxIcon /> </ListItemIcon>
+                    <ListItemText primary="Not Selected" />
                 </ListItemButton>
             </List>
         </div>
