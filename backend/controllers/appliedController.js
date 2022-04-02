@@ -93,7 +93,7 @@ exports.getMyApplied = catchAsyncErrors(async (req, res, next) => {
 // get all applied
 exports.getAllApplied = catchAsyncErrors(async (req, res, next) => {
 
-    const jobApplied = await JobApplied.find();
+    const jobApplied = await JobApplied.find().populate({ path: 'appliedJobs.job', select: 'companyName jobRole jobType salaryPM lastDateToApply whatsappLink' }).populate({ path: 'student', select: 'firstName lastName classIn year phone email class10 class12 graduation about objective address dateOfBirth linkedInURL socialLink classRollNo universityRollno createdAt skills experience projects avatar' });
 
     res.status(200).json({
         success: true,

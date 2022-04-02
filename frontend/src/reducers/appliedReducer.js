@@ -1,6 +1,7 @@
 import {
-APPLY_JOB_REQUEST, APPLY_JOB_SUCCESS, APPLY_JOB_FAIL,
-    CLEAR_ERRORS, MY_APPLIED_REQUEST, MY_APPLIED_SUCCESS, MY_APPLIED_FAIL
+    APPLY_JOB_REQUEST, APPLY_JOB_SUCCESS, APPLY_JOB_FAIL,
+    CLEAR_ERRORS, MY_APPLIED_REQUEST, MY_APPLIED_SUCCESS, MY_APPLIED_FAIL,
+    ADMIN_ALL_APPLIED_REQUEST, ADMIN_ALL_APPLIED_SUCCESS, ADMIN_ALL_APPLIED_FAIL
 } from "../constants/jobAppliedConstants";
 
 
@@ -61,3 +62,32 @@ export const myAppliedReducer = (state = { applied: [] }, action) => {
             return state;
     }
 };
+
+export const adminAllAppliedReducer = ((state = { jobApplied: [] }, action) => {
+    switch (action.type) {
+        case ADMIN_ALL_APPLIED_REQUEST:
+            return {
+                loading: true,
+                jobApplied: []
+            };
+        case ADMIN_ALL_APPLIED_SUCCESS:
+            return {
+                loading: false,
+                jobApplied: action.payload.jobApplied,
+
+            };
+        case ADMIN_ALL_APPLIED_FAIL:
+            return {
+                loading: false,
+                error: action.payload,
+            };
+        case CLEAR_ERRORS:
+            return {
+                ...state,
+                error: null
+            };
+
+        default:
+            return state;
+    }
+});

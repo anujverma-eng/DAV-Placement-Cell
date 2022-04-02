@@ -40,7 +40,7 @@ const Sidebar = (props) => {
         navigate('/admin/jobs/must/delete', { replace: true });
     };
     const selectionStatus = () => {
-        navigate('/admin/student/selection', { replace: true });
+        navigate('/admin/selection', { replace: true });
     };
     const allStudents = () => {
         navigate('/admin/students/all', { replace: true });

@@ -1,6 +1,7 @@
 import {
     APPLY_JOB_REQUEST, APPLY_JOB_SUCCESS, APPLY_JOB_FAIL,
-    CLEAR_ERRORS, MY_APPLIED_REQUEST, MY_APPLIED_SUCCESS, MY_APPLIED_FAIL
+    CLEAR_ERRORS, MY_APPLIED_REQUEST, MY_APPLIED_SUCCESS, MY_APPLIED_FAIL,
+    ADMIN_ALL_APPLIED_REQUEST, ADMIN_ALL_APPLIED_SUCCESS, ADMIN_ALL_APPLIED_FAIL
 } from "../constants/jobAppliedConstants";
 import axios from 'axios';
 
@@ -45,7 +46,27 @@ export const myApplied = () => async (dispatch) => {
 
 };
 
+export const getAllAppliedAdmin = () => async (dispatch) => {
+    try {
 
+        dispatch({
+            type: ADMIN_ALL_APPLIED_REQUEST
+        });
+        const { data } = await axios.get(`/api/v1/admin/jobApplied`);
+
+        dispatch({
+            type: ADMIN_ALL_APPLIED_SUCCESS,
+            payload: data
+        });
+
+
+    } catch (error) {
+        dispatch({
+            type: ADMIN_ALL_APPLIED_FAIL,
+            payload: error.response.data.message
+        });
+    }
+};
 
 // Clearing Errors
 export const clearErrors = () => async (dispatch) => {

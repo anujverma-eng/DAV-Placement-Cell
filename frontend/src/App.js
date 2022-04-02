@@ -27,6 +27,7 @@ import PendingJobs from './Components/Admin Components/PendingJobs/PendingJobs';
 import MustDeleteJobs from './Components/Admin Components/MustDeleteJobs/MustDeleteJobs';
 import AllStudents from './Components/Admin Components/AllStudents/AllStudents';
 import StudentProfileDetails from './Components/Admin Components/StudentProfileDetails/StudentProfileDetails';
+import AllAppliedStudents from './Components/Admin Components/AllAppliedStudents/AllAppliedStudents';
 
 function App() {
   const { isAuthenticated, student, error } = useSelector((state) => state.studentReducer);
@@ -67,6 +68,7 @@ function App() {
         <Route exact path='/admin/jobs/must/delete' element={<AdminProtection isAuthenticated={isAuthenticated} error={error} student={student} element={<MustDeleteJobs />} />} />
         <Route exact path='/admin/students/all' element={<AdminProtection isAuthenticated={isAuthenticated} error={error} student={student} element={<AllStudents />} />} />
         <Route exact path='/admin/student/:id' element={<AdminProtection isAuthenticated={isAuthenticated} error={error} student={student} element={<StudentProfileDetails />} />} />
+        <Route exact path='/admin/selection' element={<AdminProtection isAuthenticated={isAuthenticated} error={error} student={student} element={<AllAppliedStudents />} />} />
       </Routes>
       <Footer />
     </Router>
