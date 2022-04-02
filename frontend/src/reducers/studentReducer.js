@@ -7,7 +7,8 @@ import {
     FORGOT_PASSWORD_REQUEST, FORGOT_PASSWORD_SUCCESS, FORGOT_PASSWORD_FAIL,
     RESET_PASSWORD_REQUEST, RESET_PASSWORD_SUCCESS, RESET_PASSWORD_FAIL,
     ADMIN_ALL_STUDENTS_REQUEST, ADMIN_ALL_STUDENTS_SUCCESS, ADMIN_ALL_STUDENTS_FAIL,
-    ADMIN_STUDENT_DETAILS_REQUEST, ADMIN_STUDENT_DETAILS_SUCCESS, ADMIN_STUDENT_DETAILS_FAIL
+    ADMIN_STUDENT_DETAILS_REQUEST, ADMIN_STUDENT_DETAILS_SUCCESS, ADMIN_STUDENT_DETAILS_FAIL,
+    DELETE_PROFILE_REQUEST, DELETE_PROFILE_SUCCESS, DELETE_PROFILE_FAIL
 } from "../constants/studentConstants";
 
 export const studentReducer = ((state = { student: {} }, action) => {
@@ -64,6 +65,7 @@ export const updateStudentProfileReducer = ((state = {}, action) => {
     switch (action.type) {
         case UPDATE_PROFILE_REQUEST:
         case UPDATE_PASSWORD_REQUEST:
+        case DELETE_PROFILE_REQUEST:
             return {
                 ...state,
                 loading: true
@@ -75,8 +77,14 @@ export const updateStudentProfileReducer = ((state = {}, action) => {
                 loading: false,
                 isUpdated: action.payload,
             };
+        case DELETE_PROFILE_SUCCESS:
+            return {
+                loading: false,
+                isDeleted: action.payload
+            };
         case UPDATE_PROFILE_FAIL:
         case UPDATE_PASSWORD_FAIL:
+        case DELETE_PROFILE_FAIL:
             return {
                 ...state,
                 loading: false,

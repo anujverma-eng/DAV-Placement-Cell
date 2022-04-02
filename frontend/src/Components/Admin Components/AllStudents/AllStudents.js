@@ -1,6 +1,6 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getAllStudentsAdmin } from '../../../actions/studentAction';
+import { deleteStudentAdmin, getAllStudentsAdmin } from '../../../actions/studentAction';
 import { useAlert } from 'react-alert';
 import Moment from 'react-moment';
 import EditIcon from '@mui/icons-material/Edit';
@@ -8,6 +8,16 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import Metadata from '../../Layouts/Metadata';
 import Loader from '../../Layouts/Loader/Loader';
 import { Link } from 'react-router-dom';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import Button from '@mui/material/Button';
 
 const AllStudents = () => {
 
@@ -15,12 +25,40 @@ const AllStudents = () => {
   const alert = useAlert();
   const { loading, error, students, studentsCount } = useSelector((state) => state.adminStudentsReducer);
 
+  // this is for delete student request
+  const { isDeleted } = useSelector((state) => state.updateStudentProfileReducer);
+
+  const [open, setOpen] = useState(false);
+  const [studentId, setStudentId] = useState("");
+
   useEffect(() => {
     if (error) {
       alert.error(error);
     }
+    if (isDeleted) {
+      alert.info("Student Deleted Successfully");
+    }
     dispatch(getAllStudentsAdmin());
-  }, [dispatch, alert, error]);
+  }, [dispatch, alert, error, isDeleted]);
+
+  const handleDelete = (id) => {
+    setOpen(true);
+    setStudentId(id);
+
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleDeleteYES = () => {
+    setOpen(false);
+    if (studentId !== "") {
+      dispatch(deleteStudentAdmin(studentId));
+    }
+  };
+
+
   return (
     <Fragment>
       <Metadata title={"All Students"} />
@@ -62,7 +100,7 @@ const AllStudents = () => {
                           <div><label className="form-label">LinkedIn</label><a href={element.linkedInURL} target="_blank" rel="noopener noreferrer" style={{ marginLeft: 8 }}><strong>{element.linkedInURL}</strong></a></div>
                           <div><label className="form-label">Social Link</label><a href={element.linkedInURL} target="_blank" rel="noopener noreferrer" style={{ marginLeft: 8 }}><strong>{element.socialLink}</strong></a></div>
                           <div><label className="form-label">DOB</label><span style={{ marginLeft: 8 }}><strong><Moment format='D MMM YYYY'>{element.dateOfBirth && element.dateOfBirth}</Moment></strong></span></div>
-                          <div className="d-flex gap-3"><button className="btn btn-danger btn-sm" type="button"><DeleteForeverIcon />Delete Student</button></div>
+                          <div className="d-flex gap-3"><button onClick={(e) => handleDelete(element._id)} className="btn btn-danger btn-sm" type="button"><DeleteForeverIcon />Delete Student</button></div>
                           <hr className="d-block d-md-none" />
                         </div>
                       </div>
@@ -75,6 +113,18 @@ const AllStudents = () => {
               }
             </div>
           </div>
+          <Dialog open={open} onClose={handleClose} fullWidth>
+            <DialogTitle>Delete Job</DialogTitle>
+            <DialogContent>
+              <DialogContentText>
+                Are you sure you want to delete this Student ?
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleClose}>No</Button>
+              <Button onClick={handleDeleteYES}>Yes</Button>
+            </DialogActions>
+          </Dialog>
         </div>
       }
     </Fragment>

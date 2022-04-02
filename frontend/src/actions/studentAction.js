@@ -7,7 +7,8 @@ import {
     FORGOT_PASSWORD_REQUEST, FORGOT_PASSWORD_SUCCESS, FORGOT_PASSWORD_FAIL,
     RESET_PASSWORD_REQUEST, RESET_PASSWORD_SUCCESS, RESET_PASSWORD_FAIL,
     ADMIN_ALL_STUDENTS_REQUEST, ADMIN_ALL_STUDENTS_SUCCESS, ADMIN_ALL_STUDENTS_FAIL,
-    ADMIN_STUDENT_DETAILS_REQUEST, ADMIN_STUDENT_DETAILS_SUCCESS, ADMIN_STUDENT_DETAILS_FAIL
+    ADMIN_STUDENT_DETAILS_REQUEST, ADMIN_STUDENT_DETAILS_SUCCESS, ADMIN_STUDENT_DETAILS_FAIL,
+    DELETE_PROFILE_REQUEST, DELETE_PROFILE_SUCCESS, DELETE_PROFILE_FAIL
 } from "../constants/studentConstants";
 import axios from 'axios';
 import { getAllJobs } from "./jobAction";
@@ -200,6 +201,30 @@ export const getStudentDetailsAdmin = (id) => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: ADMIN_STUDENT_DETAILS_FAIL,
+            payload: error.response.data.message
+        });
+    }
+};
+
+export const deleteStudentAdmin = (id) => async (dispatch) => {
+    try {
+
+        dispatch({ type: DELETE_PROFILE_REQUEST });
+
+        if (!id) {
+            console.log("Please Enter student Id to Delete");
+            return;
+        }
+        const { data } = await axios.delete(`/api/v1/admin/student/${id}`);
+
+        dispatch({
+            type: DELETE_PROFILE_SUCCESS,
+            payload: data.success,
+        });
+
+    } catch (error) {
+        dispatch({
+            type: DELETE_PROFILE_FAIL,
             payload: error.response.data.message
         });
     }
