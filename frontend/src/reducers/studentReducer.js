@@ -6,6 +6,8 @@ import {
     UPDATE_PASSWORD_REQUEST, UPDATE_PASSWORD_SUCCESS, UPDATE_PASSWORD_FAIL, UPDATE_PASSWORD_RESET,
     FORGOT_PASSWORD_REQUEST, FORGOT_PASSWORD_SUCCESS, FORGOT_PASSWORD_FAIL,
     RESET_PASSWORD_REQUEST, RESET_PASSWORD_SUCCESS, RESET_PASSWORD_FAIL,
+    ADMIN_ALL_STUDENTS_REQUEST, ADMIN_ALL_STUDENTS_SUCCESS, ADMIN_ALL_STUDENTS_FAIL,
+    ADMIN_STUDENT_DETAILS_REQUEST, ADMIN_STUDENT_DETAILS_SUCCESS, ADMIN_STUDENT_DETAILS_FAIL
 } from "../constants/studentConstants";
 
 export const studentReducer = ((state = { student: {} }, action) => {
@@ -139,3 +141,62 @@ export const forgotPasswordReducer = ((state = {}, action) => {
 
 });
 
+
+export const adminStudentsReducer = ((state = { students: [] }, action) => {
+    switch (action.type) {
+        case ADMIN_ALL_STUDENTS_REQUEST:
+            return {
+                loading: true,
+                students: []
+            };
+        case ADMIN_ALL_STUDENTS_SUCCESS:
+            return {
+                loading: false,
+                students: action.payload.students,
+                studentsCount: action.payload.studentsCount
+            };
+        case ADMIN_ALL_STUDENTS_FAIL:
+            return {
+                loading: false,
+                error: action.payload,
+            };
+        case CLEAR_ERRORS:
+            return {
+                ...state,
+                error: null
+            };
+
+        default:
+            return state;
+    }
+});
+
+export const adminStudentDetailsReducer = ((state = { student: {} }, action) => {
+    switch (action.type) {
+        case ADMIN_STUDENT_DETAILS_REQUEST:
+            return {
+                loading: true,
+            };
+        case ADMIN_STUDENT_DETAILS_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                student: action.payload
+            };
+        case ADMIN_STUDENT_DETAILS_FAIL:
+            return {
+                ...state,
+                loading: false,
+                student: null,
+                error: action.payload
+            };
+        case CLEAR_ERRORS:
+            return {
+                ...state,
+                error: null
+            };
+
+        default:
+            return state;
+    }
+});

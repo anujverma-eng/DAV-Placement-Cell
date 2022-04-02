@@ -18,7 +18,6 @@ import Button from '@mui/material/Button';
 import Loader from '../../Layouts/Loader/Loader';
 import { useAlert } from 'react-alert';
 import { clearErrors, deleteJob, fewUpdatesInJob, getAdminJobs } from '../../../actions/jobAction';
-import { ADMIN_DELETE_JOB_RESET } from '../../../constants/jobConstants';
 
 const Dashboard = () => {
 

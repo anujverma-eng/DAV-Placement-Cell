@@ -43,7 +43,7 @@ const Sidebar = (props) => {
         navigate('/admin/student/selection', { replace: true });
     };
     const allStudents = () => {
-        navigate('/admin/student/all', { replace: true });
+        navigate('/admin/students/all', { replace: true });
     };
 
 

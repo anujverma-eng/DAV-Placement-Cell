@@ -25,6 +25,8 @@ import MyApplied from './Components/User/MyApplied/MyApplied';
 import UpdateProfileComponent from './Components/User/ProfileComponent/UpdateProfileComponent';
 import PendingJobs from './Components/Admin Components/PendingJobs/PendingJobs';
 import MustDeleteJobs from './Components/Admin Components/MustDeleteJobs/MustDeleteJobs';
+import AllStudents from './Components/Admin Components/AllStudents/AllStudents';
+import StudentProfileDetails from './Components/Admin Components/StudentProfileDetails/StudentProfileDetails';
 
 function App() {
   const { isAuthenticated, student, error } = useSelector((state) => state.studentReducer);
@@ -56,12 +58,15 @@ function App() {
         <Route exact path='/profile/update' element={<ProtectedRoute isAuthenticated={isAuthenticated} error={error} element={<UpdateProfileComponent />} />} />
 
 
+
         <Route exact path='/password/forgot' element={<UpdatePassword />} />
         <Route exact path='/password/reset/:token' element={<ResetPassword />} />
 
-        <Route exact path='admin/dashboard' element={<AdminProtection isAuthenticated={isAuthenticated} error={error} student={student} element={<Dashboard />} />} />
-        <Route exact path='admin/jobs/pending' element={<AdminProtection isAuthenticated={isAuthenticated} error={error} student={student} element={<PendingJobs />} />} />
-        <Route exact path='admin/jobs/must/delete' element={<AdminProtection isAuthenticated={isAuthenticated} error={error} student={student} element={<MustDeleteJobs />} />} />
+        <Route exact path='/admin/dashboard' element={<AdminProtection isAuthenticated={isAuthenticated} error={error} student={student} element={<Dashboard />} />} />
+        <Route exact path='/admin/jobs/pending' element={<AdminProtection isAuthenticated={isAuthenticated} error={error} student={student} element={<PendingJobs />} />} />
+        <Route exact path='/admin/jobs/must/delete' element={<AdminProtection isAuthenticated={isAuthenticated} error={error} student={student} element={<MustDeleteJobs />} />} />
+        <Route exact path='/admin/students/all' element={<AdminProtection isAuthenticated={isAuthenticated} error={error} student={student} element={<AllStudents />} />} />
+        <Route exact path='/admin/student/:id' element={<AdminProtection isAuthenticated={isAuthenticated} error={error} student={student} element={<StudentProfileDetails />} />} />
       </Routes>
       <Footer />
     </Router>
