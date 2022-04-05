@@ -46,6 +46,7 @@ export const jobDetailsReducer = ((state = { job: {} }, action) => {
         case JOB_DETAILS_SUCCESS:
         case CREATE_JOB_SUCCESS:
             return {
+                message: "Job has Posted successfully",
                 loading: false,
                 job: action.payload.job
             };

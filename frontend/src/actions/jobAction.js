@@ -75,7 +75,6 @@ export const createNewJob = (companyName, companyEmail, companyContactPerson, co
             dispatch({ type: CREATE_JOB_REQUEST });
 
             const config = { headers: { "Content-Type": "application/json" } };
-            console.log(eligibilityArray);
             const { data } = await axios.post(`/api/v1/jobs/new`, {
                 companyName, companyEmail, companyContactPerson, contactPersonPhone, CompanyWebsite,
                 companyAddress, companyAbout, jobRole, candidatesRequired, jobDescription,
