@@ -99,19 +99,23 @@ const SignUpComponent = () => {
     };
 
     const registerDataChange = (e) => {
-        if (e.target.name === "avatar") {
-            const reader = new FileReader();
-            reader.onload = () => {
-                if (reader.readyState === 2) {
-                    setAvatarPreview(reader.result);
-                    setAvatar(reader.result);
-                }
-            };
+        if (e.target.files[0].size < 1000000) {
+            if (e.target.name === "avatar") {
+                const reader = new FileReader();
+                reader.onload = () => {
+                    if (reader.readyState === 2) {
+                        setAvatarPreview(reader.result);
+                        setAvatar(reader.result);
+                    }
+                };
 
-            reader.readAsDataURL(e.target.files[0]);
+                reader.readAsDataURL(e.target.files[0]);
 
+            } else {
+                setUser({ ...user, [e.target.name]: e.target.value });
+            }
         } else {
-            setUser({ ...user, [e.target.name]: e.target.value });
+            alert.error("File Size cannot Exceed 1Mb");
         }
     };
 
@@ -157,8 +161,8 @@ const SignUpComponent = () => {
                                     </div>
                                     <div className="row justify-content-center align-items-center mb-2 p-sm-2 p-md-1">
                                         <div className="col-11 col-sm-12 col-md-6 col-lg-5 col-xl-5 col-xxl-5 text-start p-sm-2 p-md-1 mb-3 mb-sm-0">
-                                            <label className="form-label p-sm-2 p-md-1 d-none d-sm-flex" htmlFor="profile"><strong>Avatar</strong><br /><span>*</span></label>
-                                            <div className="text-center" style={{ padding: 0}}><img className="img-fluid" style={{height:"150px", width:"auto"}} src={avatarPreview} alt="Avatar" /></div>
+                                            <label className="form-label p-sm-2 p-md-1 d-none d-sm-flex" htmlFor="profile"><strong>Avatar<strong className='text-danger'>(Image Must be Less than 1mb)</strong></strong><br /><span>*</span></label>
+                                            <div className="text-center" style={{ padding: 0 }}><img className="img-fluid" style={{ height: "150px", width: "auto" }} src={avatarPreview} alt="Avatar" /></div>
                                         </div>
                                         <div className="col-11 col-sm-12 col-md-6 col-lg-5 col-xl-5 col-xxl-5 text-start p-sm-2 p-md-1 mb-3 mb-sm-0">
                                             <input required className="form-control p-sm-2 p-md-1" type="file" placeholder="Choose Profile Image" name="avatar" onChange={registerDataChange} title="Choose Avatar" accept="image/*" />
