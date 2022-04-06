@@ -99,8 +99,8 @@ const SignUpComponent = () => {
     };
 
     const registerDataChange = (e) => {
-        if (e.target.files[0].size < 1000000) {
-            if (e.target.name === "avatar") {
+        if (e.target.name === "avatar") {
+            if (e.target.files[0].size < 1000000) {
                 const reader = new FileReader();
                 reader.onload = () => {
                     if (reader.readyState === 2) {
@@ -110,12 +110,13 @@ const SignUpComponent = () => {
                 };
 
                 reader.readAsDataURL(e.target.files[0]);
-
             } else {
-                setUser({ ...user, [e.target.name]: e.target.value });
+                alert.error("File Size cannot Exceed 1Mb");
+
             }
+
         } else {
-            alert.error("File Size cannot Exceed 1Mb");
+            setUser({ ...user, [e.target.name]: e.target.value });
         }
     };
 

@@ -98,7 +98,7 @@ const AllStudents = () => {
                         <div className="col-md-6 col-xl-3 col-xxl-4" style={{ paddingBottom: 5 }}>
                           <div><label className="form-label">Address</label><span style={{ marginLeft: 8 }}><strong>{element.address}</strong></span></div>
                           <div><label className="form-label">LinkedIn</label><a href={element.linkedInURL} target="_blank" rel="noopener noreferrer" style={{ marginLeft: 8 }}><strong>{element.linkedInURL}</strong></a></div>
-                          <div><label className="form-label">Social Link</label><a href={element.linkedInURL} target="_blank" rel="noopener noreferrer" style={{ marginLeft: 8 }}><strong>{element.socialLink}</strong></a></div>
+                          <div><label className="form-label">Social Link</label><a href={element.socialLink} target="_blank" rel="noopener noreferrer" style={{ marginLeft: 8 }}><strong>{element.socialLink}</strong></a></div>
                           <div><label className="form-label">DOB</label><span style={{ marginLeft: 8 }}><strong><Moment format='D MMM YYYY'>{element.dateOfBirth && element.dateOfBirth}</Moment></strong></span></div>
                           <div className="d-flex gap-3"><button onClick={(e) => handleDelete(element._id)} className="btn btn-danger btn-sm" type="button"><DeleteForeverIcon />Delete Student</button></div>
                           <hr className="d-block d-md-none" />
