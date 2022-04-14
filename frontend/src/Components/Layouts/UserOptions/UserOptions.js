@@ -42,13 +42,14 @@ const UserOptions = ({ student, isAuthenticated, error }) => {
     };
 
     const options = [
-        { icon: <ListAltIcon />, name: "Job Applied", func: applied },
         { icon: <AccountCircleIcon />, name: "Profile", func: account },
         { icon: <LogoutIcon />, name: "Logout", func: logoutMe }
     ];
 
     if (student.role === "admin") {
         options.unshift({ icon: <DashboardIcon />, name: "Dashboard", func: dashboard });
+    } else {
+        options.unshift({ icon: <ListAltIcon />, name: "Job Applied", func: applied });
     }
 
     return (

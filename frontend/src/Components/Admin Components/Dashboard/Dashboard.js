@@ -18,6 +18,8 @@ import Button from '@mui/material/Button';
 import Loader from '../../Layouts/Loader/Loader';
 import { useAlert } from 'react-alert';
 import { clearErrors, deleteJob, fewUpdatesInJob, getAdminJobs } from '../../../actions/jobAction';
+import { getAllStudentsAdmin } from '../../../actions/studentAction';
+import { getAllAppliedAdmin } from '../../../actions/appliedAction';
 
 const Dashboard = () => {
 
@@ -47,6 +49,8 @@ const Dashboard = () => {
         jobDeleteUpdateReducer.isUpdated && alert.success("Successfully Updated");
         jobDeleteUpdateReducer.isDeleted && alert.success("Deleted Successfully");
         dispatch(getAdminJobs("Approved", false));
+        dispatch(getAllStudentsAdmin());
+        dispatch(getAllAppliedAdmin());
     }, [dispatch, error, alert, jobDeleteUpdateReducer.error, jobDeleteUpdateReducer.isDeleted, jobDeleteUpdateReducer.isUpdated]);
 
 
