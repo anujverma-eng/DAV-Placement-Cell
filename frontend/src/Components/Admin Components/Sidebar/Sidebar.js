@@ -17,6 +17,13 @@ import Typography from '@mui/material/Typography';
 import { ListItemButton } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import PendingActionsRoundedIcon from '@mui/icons-material/PendingActionsRounded';
+import DashboardRoundedIcon from '@mui/icons-material/DashboardRounded';
+import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
+import PersonSearchRoundedIcon from '@mui/icons-material/PersonSearchRounded';
+import GroupAddRoundedIcon from '@mui/icons-material/GroupAddRounded';
+import MoreTimeRoundedIcon from '@mui/icons-material/MoreTimeRounded';
+import DoneAllRoundedIcon from '@mui/icons-material/DoneAllRounded';
 
 const drawerWidth = 240;
 
@@ -63,34 +70,34 @@ const Sidebar = (props) => {
             <Divider />
             <List>
                 <ListItemButton onClick={liveJobs}>
-                    <ListItemIcon> <InboxIcon /> </ListItemIcon>
-                    <ListItemText primary="Live Jobs" />
+                    <ListItemIcon> <DashboardRoundedIcon /> </ListItemIcon>
+                    <ListItemText primary="Dashboard" />
                 </ListItemButton>
                 <ListItemButton onClick={pendingJobs}>
-                    <ListItemIcon> <InboxIcon /> </ListItemIcon>
+                    <ListItemIcon> <PendingActionsRoundedIcon /> </ListItemIcon>
                     <ListItemText primary="Pending Jobs" />
                 </ListItemButton>
                 <ListItemButton onClick={mustDeleteJobs}>
-                    <ListItemIcon> <InboxIcon /> </ListItemIcon>
+                    <ListItemIcon> <DeleteForeverRoundedIcon /> </ListItemIcon>
                     <ListItemText primary="Must Delete Jobs" />
                 </ListItemButton>
                 <ListItemButton onClick={whoApplied}>
-                    <ListItemIcon> <InboxIcon /> </ListItemIcon>
+                    <ListItemIcon> <PersonSearchRoundedIcon /> </ListItemIcon>
                     <ListItemText primary="Get Candidates" />
                 </ListItemButton>
             </List>
             <Divider />
             <List>
                 <ListItemButton onClick={allStudents}>
-                    <ListItemIcon> <InboxIcon /> </ListItemIcon>
+                    <ListItemIcon> <GroupAddRoundedIcon /> </ListItemIcon>
                     <ListItemText primary="All Students" />
                 </ListItemButton>
                 <ListItemButton onClick={selectionStatus}>
-                    <ListItemIcon> <InboxIcon /> </ListItemIcon>
+                    <ListItemIcon> <MoreTimeRoundedIcon /> </ListItemIcon>
                     <ListItemText primary="Pending Selections" />
                 </ListItemButton>
                 <ListItemButton onClick={selectedStudents}>
-                    <ListItemIcon> <InboxIcon /> </ListItemIcon>
+                    <ListItemIcon> <DoneAllRoundedIcon /> </ListItemIcon>
                     <ListItemText primary="Selected Students" />
                 </ListItemButton>
                 <ListItemButton onClick={notSelectedStudents}>
