@@ -146,7 +146,7 @@ const AllAppliedStudentsSelected = () => {
                         <DialogTitle>Delete Job</DialogTitle>
                         <DialogContent>
                             <DialogContentText>
-                                Are you sure you want to delete this job ?
+                                Are you sure you want to delete this Applied ?
                             </DialogContentText>
                         </DialogContent>
                         <DialogActions>

@@ -22,8 +22,10 @@ import { clearErrors, deleteJob, fewUpdatesInJob, getAdminJobs } from '../../../
 const Dashboard = () => {
 
     const dispatch = useDispatch();
+    const { studentsCount } = useSelector((state) => state.adminStudentsReducer);
     const { loading, error, jobs, jobsCount } = useSelector((state) => state.adminJobReducer);
     const jobDeleteUpdateReducer = useSelector((state) => state.adminDeleteUpdateJobReducer);
+    const { jobApplied } = useSelector((state) => state.adminAllAppliedReducer);
 
     const alert = useAlert();
     const [open, setOpen] = useState(false);
@@ -116,7 +118,7 @@ const Dashboard = () => {
                                     <div className="row align-items-center no-gutters">
                                         <div className="col me-2">
                                             <div className="text-uppercase text-success fw-bold text-xs mb-1"><span>Total students</span></div>
-                                            <div className="text-dark fw-bold h5 mb-0"><span>1156</span></div>
+                                            <div className="text-dark fw-bold h5 mb-0"><span>{studentsCount && studentsCount}</span></div>
                                         </div>
                                         <div className="col-auto"><i className="fas fa-user-graduate fa-2x text-gray-300" /></div>
                                     </div>
@@ -129,7 +131,7 @@ const Dashboard = () => {
                                     <div className="row align-items-center no-gutters">
                                         <div className="col me-2">
                                             <div className="text-uppercase text-info fw-bold text-xs mb-1"><span>Total applied</span></div>
-                                            <div className="text-dark fw-bold h5 mb-0 me-3"><span>1089</span></div>
+                                            <div className="text-dark fw-bold h5 mb-0 me-3"><span>{jobApplied && jobApplied.length}</span></div>
                                         </div>
                                         <div className="col-auto"><i className="fas fa-diagnoses fa-2x text-gray-300" /></div>
                                     </div>
@@ -141,7 +143,7 @@ const Dashboard = () => {
                                 <div className="card-body">
                                     <div className="row align-items-center no-gutters">
                                         <div className="col me-2">
-                                            <div className="text-uppercase text-warning fw-bold text-xs mb-1"><span>Pending approvals</span></div>
+                                            <div className="text-uppercase text-warning fw-bold text-xs mb-1"><span>Pending Job approvals</span></div>
                                             <div className="text-dark fw-bold h5 mb-0"><span>{(jobsCount - jobs.length).toString()}</span></div>
                                         </div>
                                         <div className="col-auto"><i className="fas fa-stopwatch fa-2x text-gray-300" /></div>

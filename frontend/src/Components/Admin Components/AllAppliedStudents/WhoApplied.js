@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { clearErrors, deleteJobApplied, getAllAppliedAdmin, updateJobApplied, whoAppliedJobAdmin } from '../../../actions/appliedAction';
+import { clearErrors, deleteJobApplied, updateJobApplied, whoAppliedJobAdmin } from '../../../actions/appliedAction';
 import Loader from '../../Layouts/Loader/Loader';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
@@ -168,7 +168,7 @@ const WhoApplied = () => {
                         <DialogTitle>Delete Job</DialogTitle>
                         <DialogContent>
                             <DialogContentText>
-                                Are you sure you want to delete this job ?
+                                Are you sure you want to delete this Applied ?
                             </DialogContentText>
                         </DialogContent>
                         <DialogActions>
