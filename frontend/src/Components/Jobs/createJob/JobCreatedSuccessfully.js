@@ -21,9 +21,10 @@ const JobCreatedSuccessfully = () => {
         if (error) {
             alert.error(error);
             dispatch(clearErrors());
+            navigate('/not/found', { replace: true });
         }
         dispatch(getJobDetails(params.id));
-    }, [dispatch, params.id, alert, error]);
+    }, [dispatch, params.id, alert, error, navigate]);
 
 
 
