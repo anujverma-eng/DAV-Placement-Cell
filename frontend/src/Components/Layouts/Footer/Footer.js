@@ -9,11 +9,12 @@ const Footer = () => {
 
   const isAdmin = location.pathname.toString().includes("admin");
   const isLogin = location.pathname.toString().includes("login");
+  const isJobCreatedSuccess = location.pathname.toString().includes("/job/success");
 
 
 
   let displayNavbar = "block";
-  if (isAdmin) {
+  if (isAdmin || isJobCreatedSuccess) {
     displayNavbar = "none";
   } else if (isLogin) {
     displayNavbar = "none";

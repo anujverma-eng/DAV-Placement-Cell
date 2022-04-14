@@ -2,6 +2,7 @@ const Job = require('../models/jobsModel');
 const ErrorHandler = require('../utils/errorHandler');
 const catchAsyncErrors = require('../middlewares/catchAsyncErrors');
 const ApiFeatures = require('../utils/apiFeatures');
+const sendEmail = require('../utils/sendEmail');
 
 
 // Create New Job
@@ -9,6 +10,18 @@ exports.createJob = catchAsyncErrors(async (req, res, next) => {
 
 
     const job = await Job.create(req.body);
+
+    const viewJobURL = `${process.env.FRONTEND_URL}/create/job/success/${job._id}`;
+
+    try {
+        await sendEmail({
+            email: job.companyEmail,
+            subject: `D.A.V. College, Jalandhar, Placement Cell`,
+            message: `Dear ${job.companyContactPerson}, \nThank you for Posting Job on D.A.V. College Placement Cell Web Portal \n we will contact you soon regarding further details \n you can view the your job on clicking the below Link \n ${viewJobURL}`,
+        });
+    } catch (error) {
+        console.log(error.message);
+    }
 
     res.status(201).json({
         success: true,

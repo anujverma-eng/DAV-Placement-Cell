@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { clearErrors } from '../../../actions/jobAction';
+import { clearErrors, getJobDetails } from '../../../actions/jobAction';
 import { useAlert } from 'react-alert';
 import Loader from '../../Layouts/Loader/Loader';
 import { createNewJob } from '../../../actions/jobAction';
@@ -19,7 +19,7 @@ const CreateJob = () => {
     const navigate = useNavigate();
 
     const { student } = useSelector((state) => state.studentReducer);
-    const { message, error, loading } = useSelector((state) => state.jobDetailsReducer);
+    const { message, error, loading, jobCreated } = useSelector((state) => state.jobDetailsReducer);
 
     useEffect(() => {
         if (error) {
@@ -28,11 +28,13 @@ const CreateJob = () => {
         }
         if (message) {
             alert.success(message);
+            jobCreated && console.log(jobCreated._id);
+            jobCreated && navigate(`/create/job/success/${jobCreated._id}`, { replace: true });
         }
         if (student && student.role === 'student') {
             navigate('/', { replace: true });
         }
-    }, [error, alert, navigate, student, dispatch, message]);
+    }, [error, alert, navigate, student, dispatch, message, jobCreated]);
 
     const [classFor, setClassFor] = useState({
         BCA: "",
@@ -176,8 +178,7 @@ const CreateJob = () => {
 
         ));
 
-        // alert.success("Job has Posted Successfully");
-        // navigate("/", { replace: true });
+        // jobCreated && navigate(`/job/${jobCreated._id}`);
 
     };
 

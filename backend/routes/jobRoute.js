@@ -15,8 +15,8 @@ router.route("/admin/job/:id")
     .put(isAuthenticatedUser, authorizeRoles("admin"), updateJob)
     .delete(isAuthenticatedUser, authorizeRoles("admin"), deleteJob);
 
-router.route("/job/:id").get(isAuthenticatedUser, authorizeRoles("admin", "student"), getJobDetails);
-// router.route("/job/:id").get(getJobDetails);
+// router.route("/job/:id").get(isAuthenticatedUser, authorizeRoles("admin", "student"), getJobDetails);
+router.route("/job/:id").get(getJobDetails);
 
 
 module.exports = router;

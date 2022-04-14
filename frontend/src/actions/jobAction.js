@@ -85,7 +85,7 @@ export const createNewJob = (companyName, companyEmail, companyContactPerson, co
 
             dispatch({
                 type: CREATE_JOB_SUCCESS,
-                payload: data.job
+                payload: data
             });
 
 

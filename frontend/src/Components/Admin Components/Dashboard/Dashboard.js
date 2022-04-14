@@ -14,6 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Button from '@mui/material/Button';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 
 import Loader from '../../Layouts/Loader/Loader';
 import { useAlert } from 'react-alert';
@@ -184,11 +185,12 @@ const Dashboard = () => {
                                             </div>
                                             <div className="col-md-4 col-xl-3 col-xxl-3" style={{ paddingBottom: 5 }}>
                                                 <div><label className="form-label">Created At</label><span style={{ marginLeft: 8 }}><br /><strong><Moment format='D MMM YYYY, hh:mm'>{element.createdAt && element.createdAt}</Moment></strong></span></div>
-                                                <div><label className="form-label">ID</label><span style={{ marginLeft: 8 }}><br /><strong>{element._id}</strong></span></div>
+                                                <div><label className="form-label">Job ID</label><span style={{ marginLeft: 8 }}><br /><strong>{element._id}</strong></span></div>
                                                 {/* <div className="text-success"><label className="form-label">Selected</label><span className="text-danger" style={{ marginLeft: 8 }}><strong>8</strong></span></div> */}
                                                 <div className="d-flex gap-3">
                                                     <button onClick={(e) => handleDelete(element._id)} className="btn btn-danger" type="button"><DeleteForeverIcon /></button>
                                                     <button onClick={(e) => handleEdit(element._id, element.whatsappLink, element.lastDateToApply)} className="btn btn-primary" type="button"><EditIcon /></button>
+                                                    <button onClick={() => { navigator.clipboard.writeText(element._id); }} className="btn btn-success" type="button"><ContentCopyIcon /> Copy Job ID</button>
                                                 </div>
                                                 <hr className="d-block d-md-none" />
                                             </div>

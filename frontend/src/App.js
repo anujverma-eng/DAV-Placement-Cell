@@ -31,6 +31,7 @@ import AllAppliedStudents from './Components/Admin Components/AllAppliedStudents
 import AllAppliedStudentsSelected from './Components/Admin Components/AllAppliedStudents/AllAppliedStudentsSelected';
 import AllAppliedStudentsNotSelected from './Components/Admin Components/AllAppliedStudents/AllAppliedStudentsNotSelected';
 import WhoApplied from './Components/Admin Components/AllAppliedStudents/WhoApplied';
+import JobCreatedSuccessfully from './Components/Jobs/createJob/JobCreatedSuccessfully';
 
 function App() {
   const { isAuthenticated, student, error } = useSelector((state) => state.studentReducer);
@@ -55,6 +56,7 @@ function App() {
         <Route exact path='/login' element={<LoginComponent />} />
         <Route exact path='/register' element={<SignUpComponent />} />
         <Route exact path='/new/job' element={<CreateJob />} />
+        <Route exact path='/create/job/success/:id' element={<JobCreatedSuccessfully />} />
 
         <Route exact path='/job/:id' element={<ProtectedRoute isAuthenticated={isAuthenticated} error={error} element={<JobDetailsComponent />} />} />
         <Route exact path='/account' element={<ProtectedRoute isAuthenticated={isAuthenticated} error={error} element={<ProfileComponent />} />} />
