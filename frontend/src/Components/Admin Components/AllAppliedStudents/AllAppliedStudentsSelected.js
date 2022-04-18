@@ -112,18 +112,18 @@ const AllAppliedStudentsSelected = () => {
                                                     <hr className="d-block d-md-none" />
                                                 </div>
                                                 <div className="col-md-6 col-lg-5 col-xl-3 col-xxl-3" style={{ paddingBottom: 5 }}>
-                                                    <div><label className="form-label">Applied In</label><span className="text-info" style={{ marginLeft: 8 }}><strong>{element.appliedJobs[0].job.companyName}</strong></span></div>
-                                                    <div><label className="form-label">Profile</label><span className="text-dark" style={{ marginLeft: 8 }}><strong>{element.appliedJobs[0].job.jobRole}</strong></span></div>
-                                                    <div><label className="form-label">Job Type</label><span className="text-success" style={{ marginLeft: 8 }}><strong>{element.appliedJobs[0].job.jobType}</strong></span></div>
-                                                    <div><label className="form-label">Salary / Stipend</label><span style={{ marginLeft: 8 }}><strong>{element.appliedJobs[0].job.salaryPM}</strong></span></div>
-                                                    <div><label className="form-label">Last Date to apply</label><span style={{ marginLeft: 8 }}><strong><Moment format='DD MMM YYYY, hh:mm'>{element.appliedJobs[0].job.lastDateToApply}</Moment></strong></span></div>
-                                                    <div className="d-flex gap-3"><Link to={`/job/${element.appliedJobs[0].job._id}`} className="btn btn-dark btn-sm" role="button">Job Details</Link><Link to={`/admin/student/${element.student._id}`} className="btn btn-info btn-sm" role="button">Student Profile</Link></div>
+                                                    <div><label className="form-label">Applied In</label><span className="text-info" style={{ marginLeft: 8 }}><strong>{element.appliedJobs[0].job && element.appliedJobs[0].job.companyName}</strong></span></div>
+                                                    <div><label className="form-label">Profile</label><span className="text-dark" style={{ marginLeft: 8 }}><strong>{element.appliedJobs[0].job && element.appliedJobs[0].job.jobRole}</strong></span></div>
+                                                    <div><label className="form-label">Job Type</label><span className="text-success" style={{ marginLeft: 8 }}><strong>{element.appliedJobs[0].job && element.appliedJobs[0].job.jobType}</strong></span></div>
+                                                    <div><label className="form-label">Salary / Stipend</label><span style={{ marginLeft: 8 }}><strong>{element.appliedJobs[0].job && element.appliedJobs[0].job.salaryPM}</strong></span></div>
+                                                    <div><label className="form-label">Last Date to apply</label><span style={{ marginLeft: 8 }}><strong><Moment format='DD MMM YYYY, hh:mm'>{element.appliedJobs[0].job && element.appliedJobs[0].job.lastDateToApply}</Moment></strong></span></div>
+                                                    <div className="d-flex gap-3"><Link to={`/job/${element.appliedJobs[0].job && element.appliedJobs[0].job._id}`} className="btn btn-dark btn-sm" role="button">Job Details</Link><Link to={`/admin/student/${element.student._id}`} className="btn btn-info btn-sm" role="button">Student Profile</Link></div>
                                                     <hr className="d-block d-md-none" />
                                                 </div>
                                                 <div className="col-md-6 col-xl-3 col-xxl-4" style={{ paddingBottom: 5 }}>
                                                     <div><label className="form-label">Applied on</label><span style={{ marginLeft: 8 }}><strong><Moment format='DD MMM YYYY, hh:mm'></Moment></strong></span></div>
                                                     <div><label className="form-label">Student Id</label><span style={{ marginLeft: 8 }}><strong>{element.student._id}</strong></span></div>
-                                                    <div><label className="form-label">Job Id</label><span style={{ marginLeft: 8 }}><strong>{element.appliedJobs[0].job._id}</strong></span></div>
+                                                    <div><label className="form-label">Job Id</label><span style={{ marginLeft: 8 }}><strong>{element.appliedJobs[0].job && element.appliedJobs[0].job._id}</strong></span></div>
                                                     <div><label className="form-label">Applied Id</label><span style={{ marginLeft: 8 }}><strong>{element._id}</strong></span></div>
                                                     <div className="text-success"><label className="form-label">Status</label><span className="text-danger" style={{ marginLeft: 8 }}><strong>{element.interviewStatus}</strong></span></div>
                                                     <div className="d-flex gap-3">

@@ -47,15 +47,17 @@ const MyApplied = () => {
 
   jobApplied && jobApplied.forEach((element, idx) => {
     console.log(element);
-    rows.push({
-      id: element.appliedJobs[0].job._id,
-      companyName: element.appliedJobs[0].job.companyName,
-      salaryPM: element.appliedJobs[0].job.salaryPM,
-      jobType: element.appliedJobs[0].job.jobType,
-      whatsappLink: element.appliedJobs[0].job.whatsappLink,
-      interviewStatus: element.interviewStatus,
-      createdAt: new Date(element.createdAt).toDateString(),
-    });
+    if (element.appliedJobs[0].job !== null) {
+      rows.push({
+        id: element.appliedJobs[0].job._id,
+        companyName: element.appliedJobs[0].job.companyName,
+        salaryPM: element.appliedJobs[0].job.salaryPM,
+        jobType: element.appliedJobs[0].job.jobType,
+        whatsappLink: element.appliedJobs[0].job.whatsappLink,
+        interviewStatus: element.interviewStatus,
+        createdAt: new Date(element.createdAt).toDateString(),
+      });
+    }
   });
 
   useEffect(() => {

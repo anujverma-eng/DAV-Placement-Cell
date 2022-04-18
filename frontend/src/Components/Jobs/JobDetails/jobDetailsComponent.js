@@ -78,7 +78,7 @@ const JobDetailsComponent = () => {
 
     const alreadyAppliedJobsID = [];
     jobApplied && jobApplied.forEach((job, idx) => {
-        alreadyAppliedJobsID.push(job.appliedJobs[0].job._id);
+        job.appliedJobs[0].job && alreadyAppliedJobsID.push(job.appliedJobs[0].job._id);
     });
 
     const handleApplyNow = () => {
