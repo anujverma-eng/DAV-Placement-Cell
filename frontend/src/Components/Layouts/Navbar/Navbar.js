@@ -64,7 +64,7 @@ const Navbar = () => {
     // </nav>
     <Navbars sticky="top" collapseOnSelect expand="lg" bg="light" variant="light" style={{ display: displayNavbar }}>
       <Container>
-        <Navbars.Brand><Link className="navbar-brand d-flex align-items-center" to="/"><span className="shadow d-flex justify-content-center align-items-center me-2 bs-icon"><img className="img-fluid" alt='Logo' src="davLogo.png" /></span><span>D.A.V. Placement Cell</span></Link> </Navbars.Brand>
+        <Navbars.Brand><Link className="navbar-brand d-flex align-items-center" to="/"><span className="shadow d-flex justify-content-center align-items-center me-2 bs-icon"><img className="img-fluid" alt='Logo' src="davLogo.png" /></span><span>D.A.V. Placements</span></Link> </Navbars.Brand>
         <Navbars.Toggle aria-controls="responsive-navbar-nav" />
         <Navbars.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
@@ -72,6 +72,7 @@ const Navbar = () => {
             <Nav.Link href="#pricing">About Us</Nav.Link>
             <Nav.Link href="#pricing">Contact Us</Nav.Link>
             {(!student || (student && student.role === 'admin')) && <li className="nav-item"><Link className="nav-link" to="/new/job">Post Job</Link></li>}
+            {student && student.role === 'admin' ? <li className="nav-item"><Link to={'/admin/dashboard'} className="nav-link" style={{ cursor: "pointer" }} >Dashboard</Link></li> : <li />}
           </Nav>
           <Nav>
             {!student && <Link className="btn btn-primary shadow" role="button" to="/login">Login</Link>}
