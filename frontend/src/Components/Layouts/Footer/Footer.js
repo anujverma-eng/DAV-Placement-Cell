@@ -1,7 +1,6 @@
 import React from 'react';
 import './Footer.css';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import './Footer.css';
 
@@ -40,7 +39,7 @@ const Footer = () => {
     //     </ul>
     //   </div>
     // </div>
-    <footer>
+    <footer style={{ display: displayNavbar }}>
       <div className="row">
         <div className="col-sm-6 col-md-4 footer-navigation">
           <h3><Link to="/">D.A.V. Placement Cell</Link></h3>

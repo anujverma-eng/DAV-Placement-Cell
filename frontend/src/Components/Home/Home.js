@@ -35,7 +35,7 @@ const Home = () => {
                     <header style={{ paddingTop: 62 }}>
                         <div className="carousel slide carousel-fade" data-bs-ride="carousel" id="carousel-1" style={{ height: 600 }}>
                             <div className="carousel-inner h-100">
-                                <div className="carousel-item active h-100"><img alt="pics" className="img-fluid w-100 d-block position-absolute h-100 fit-cover" src="slide-5.jpg" alt="Slide Image" style={{ zIndex: -1 }} />
+                                <div className="carousel-item active h-100"><img alt="pics" className="img-fluid w-100 d-block position-absolute h-100 fit-cover" src="slide-5.jpg" style={{ zIndex: -1 }} />
                                     <div className="container d-flex flex-column justify-content-center h-100">
                                         <div className="row">
                                             <div className="col-md-6 col-xl-4 offset-md-2">
@@ -46,7 +46,7 @@ const Home = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="carousel-item h-100"><img alt="pics" className="w-100 d-block position-absolute h-100 fit-cover" src="slide-2.png" alt="Slide Image" style={{ zIndex: -1 }} />
+                                <div className="carousel-item h-100"><img alt="pics" className="w-100 d-block position-absolute h-100 fit-cover" src="slide-2.png" style={{ zIndex: -1 }} />
                                     <div className="container d-flex flex-column justify-content-center h-100">
                                         <div className="row">
                                             <div className="col-md-6 col-xl-4 offset-md-2">
@@ -58,7 +58,7 @@ const Home = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="carousel-item h-100"><img alt="pics" className="w-100 d-block position-absolute h-100 fit-cover" src="slide-4.jpg" alt="Slide Image" style={{ zIndex: -1 }} />
+                                <div className="carousel-item h-100"><img alt="pics" className="w-100 d-block position-absolute h-100 fit-cover" src="slide-4.jpg" style={{ zIndex: -1 }} />
                                     <div className="container d-flex flex-column justify-content-center h-100">
                                         <div className="row">
                                             <div className="col-md-6 col-xl-4 offset-md-2">
@@ -70,7 +70,7 @@ const Home = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="carousel-item h-100"><img alt="pics" className="w-100 d-block position-absolute h-100 fit-cover" src="slide-6.jpg" alt="Slide Image" style={{ zIndex: -1 }} />
+                                <div className="carousel-item h-100"><img alt="pics" className="w-100 d-block position-absolute h-100 fit-cover" src="slide-6.jpg" style={{ zIndex: -1 }} />
                                     <div className="container d-flex flex-column justify-content-center h-100">
                                         <div className="row">
                                             <div className="col-md-6 col-xl-4 offset-md-2">
@@ -199,8 +199,8 @@ const Home = () => {
                                     <div className="card-container-imagia">
                                         <div className="card-imagia">
                                             <div className="front-imagia">
-                                                <div className="cover-imagia"><img alt src="https://unsplash.it/720/500?image=1067" /></div>
-                                                <div className="user-imagia"><img alt="pics" className="img-circle" alt src="profile.jpg" /></div>
+                                                <div className="cover-imagia"><img alt="pincs" src="https://unsplash.it/720/500?image=1067" /></div>
+                                                <div className="user-imagia"><img alt="pics" className="img-circle" src="profile.jpg" /></div>
                                                 <div className="content-imagia">
                                                     <h3 className="name-imagia">Anuj Verma</h3>
                                                     <p className="subtitle-imagia">Developer</p>
@@ -216,7 +216,7 @@ const Home = () => {
                                                     </div>
                                                 </div>
                                                 <div className="footer-imagia">
-                                                    <div className="social-imagia text-center"><a href="#"><i className="fa fa-facebook" /></a><a href="#"><i className="fa fa-linkedin" /></a><a href="#"><i className="fa fa-twitter" /></a></div>
+                                                    <div className="social-imagia text-center"><a href="/"><i className="fa fa-facebook" /></a><a href="/"><i className="fa fa-linkedin" /></a><a href="/"><i className="fa fa-twitter" /></a></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -227,7 +227,7 @@ const Home = () => {
                                         <div className="card-imagia">
                                             <div className="front-imagia">
                                                 <div className="cover-imagia cover-gradient" />
-                                                <div className="user-imagia"><img alt="pics" className="img-circle" alt src="https://unsplash.it/120/120?image=64" /></div>
+                                                <div className="user-imagia"><img alt="pics" className="img-circle" src="https://unsplash.it/120/120?image=64" /></div>
                                                 <div className="content-imagia">
                                                     <h3 className="name-imagia">Gurjeet Singh</h3>
                                                     <p className="subtitle-imagia">Designer</p>
@@ -243,7 +243,7 @@ const Home = () => {
                                                     </div>
                                                 </div>
                                                 <div className="footer-imagia">
-                                                    <div className="social-imagia text-center"><a href="#"><i className="fa fa-facebook" /></a><a href="#"><i className="fa fa-linkedin" /></a><a href="#"><i className="fa fa-twitter" /></a></div>
+                                                    <div className="social-imagia text-center"><a href="/"><i className="fa fa-facebook" /></a><a href="/"><i className="fa fa-linkedin" /></a><a href="/"><i className="fa fa-twitter" /></a></div>
                                                 </div>
                                             </div>
                                         </div>
