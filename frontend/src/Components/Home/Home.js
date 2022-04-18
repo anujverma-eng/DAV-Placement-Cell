@@ -35,7 +35,7 @@ const Home = () => {
                     <header style={{ paddingTop: 62 }}>
                         <div className="carousel slide carousel-fade" data-bs-ride="carousel" id="carousel-1" style={{ height: 600 }}>
                             <div className="carousel-inner h-100">
-                                <div className="carousel-item active h-100"><img className="img-fluid w-100 d-block position-absolute h-100 fit-cover" src="slide-5.jpg" alt="Slide Image" style={{ zIndex: -1 }} />
+                                <div className="carousel-item active h-100"><img alt="pics" className="img-fluid w-100 d-block position-absolute h-100 fit-cover" src="slide-5.jpg" alt="Slide Image" style={{ zIndex: -1 }} />
                                     <div className="container d-flex flex-column justify-content-center h-100">
                                         <div className="row">
                                             <div className="col-md-6 col-xl-4 offset-md-2">
@@ -46,7 +46,7 @@ const Home = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="carousel-item h-100"><img className="w-100 d-block position-absolute h-100 fit-cover" src="slide-2.png" alt="Slide Image" style={{ zIndex: -1 }} />
+                                <div className="carousel-item h-100"><img alt="pics" className="w-100 d-block position-absolute h-100 fit-cover" src="slide-2.png" alt="Slide Image" style={{ zIndex: -1 }} />
                                     <div className="container d-flex flex-column justify-content-center h-100">
                                         <div className="row">
                                             <div className="col-md-6 col-xl-4 offset-md-2">
@@ -58,7 +58,7 @@ const Home = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="carousel-item h-100"><img className="w-100 d-block position-absolute h-100 fit-cover" src="slide-4.jpg" alt="Slide Image" style={{ zIndex: -1 }} />
+                                <div className="carousel-item h-100"><img alt="pics" className="w-100 d-block position-absolute h-100 fit-cover" src="slide-4.jpg" alt="Slide Image" style={{ zIndex: -1 }} />
                                     <div className="container d-flex flex-column justify-content-center h-100">
                                         <div className="row">
                                             <div className="col-md-6 col-xl-4 offset-md-2">
@@ -70,7 +70,7 @@ const Home = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="carousel-item h-100"><img className="w-100 d-block position-absolute h-100 fit-cover" src="slide-6.jpg" alt="Slide Image" style={{ zIndex: -1 }} />
+                                <div className="carousel-item h-100"><img alt="pics" className="w-100 d-block position-absolute h-100 fit-cover" src="slide-6.jpg" alt="Slide Image" style={{ zIndex: -1 }} />
                                     <div className="container d-flex flex-column justify-content-center h-100">
                                         <div className="row">
                                             <div className="col-md-6 col-xl-4 offset-md-2">
@@ -105,7 +105,7 @@ const Home = () => {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="col-md-6 order-md-last d-none d-md-block" style={{ minHeight: 250 }}><img className="w-100 h-75 fit-cover" src="slide-7.png" /></div>
+                                        <div className="col-md-6 order-md-last d-none d-md-block" style={{ minHeight: 250 }}><img alt="pics" className="w-100 h-75 fit-cover" src="slide-7.png" /></div>
                                     </div>
                                 </div>
                             </div>
@@ -117,40 +117,40 @@ const Home = () => {
                                 <div className="carousel-item active">
                                     <div className="container" style={{ paddingRight: 20, paddingLeft: 20 }}>
                                         <div className="row" style={{ marginRight: 0, marginLeft: 0, paddingRight: 10, paddingLeft: 10 }}>
-                                            <div className="col-md-3 text-center"><img className="img-fluid w-50 h-50" src="Concentrix.png" width="150px" height="auto" /></div>
-                                            <div className="col-md-3 text-center"><img className="img-fluid w-50 h-50" src="Lavya-Associates.jpg" width="150px" height="auto" /></div>
-                                            <div className="col-md-3 text-center"><img className="img-fluid w-50 h-50" src="TCS.png" width="150px" height="auto" /></div>
-                                            <div className="col text-center"><img className="img-fluid w-50 h-50" src="wipro.png" /></div>
+                                            <div className="col-md-3 text-center"><img alt="pics" className="img-fluid w-50 h-50" src="Concentrix.png" width="150px" height="auto" /></div>
+                                            <div className="col-md-3 text-center"><img alt="pics" className="img-fluid w-50 h-50" src="Lavya-Associates.jpg" width="150px" height="auto" /></div>
+                                            <div className="col-md-3 text-center"><img alt="pics" className="img-fluid w-50 h-50" src="TCS.png" width="150px" height="auto" /></div>
+                                            <div className="col text-center"><img alt="pics" className="img-fluid w-50 h-50" src="wipro.png" /></div>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="carousel-item">
                                     <div className="container" style={{ paddingRight: 20, paddingLeft: 20 }}>
                                         <div className="row" style={{ marginRight: 0, marginLeft: 0, paddingRight: 10, paddingLeft: 10 }}>
-                                            <div className="col-md-3"><img className="img-fluid w-50 h-50" src="Concentrix.png" width="150px" height="auto" /></div>
-                                            <div className="col-md-3"><img className="img-fluid w-50 h-50" src="Lavya-Associates.jpg" width="150px" height="auto" /></div>
-                                            <div className="col-md-3"><img className="img-fluid w-50 h-50" src="TCS.png" width="150px" height="auto" /></div>
-                                            <div className="col"><img className="img-fluid w-50 h-50" src="wipro.png" /></div>
+                                            <div className="col-md-3"><img alt="pics" className="img-fluid w-50 h-50" src="Concentrix.png" width="150px" height="auto" /></div>
+                                            <div className="col-md-3"><img alt="pics" className="img-fluid w-50 h-50" src="Lavya-Associates.jpg" width="150px" height="auto" /></div>
+                                            <div className="col-md-3"><img alt="pics" className="img-fluid w-50 h-50" src="TCS.png" width="150px" height="auto" /></div>
+                                            <div className="col"><img alt="pics" className="img-fluid w-50 h-50" src="wipro.png" /></div>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="carousel-item">
                                     <div className="container" style={{ paddingRight: 20, paddingLeft: 20 }}>
                                         <div className="row" style={{ marginRight: 0, marginLeft: 0, paddingRight: 10, paddingLeft: 10 }}>
-                                            <div className="col-md-3"><img className="img-fluid w-50 h-50" src="Concentrix.png" width="150px" height="auto" /></div>
-                                            <div className="col-md-3"><img className="img-fluid w-50 h-50" src="Lavya-Associates.jpg" width="150px" height="auto" /></div>
-                                            <div className="col-md-3"><img className="img-fluid w-50 h-50" src="TCS.png" width="150px" height="auto" /></div>
-                                            <div className="col"><img className="img-fluid w-50 h-50" src="wipro.png" /></div>
+                                            <div className="col-md-3"><img alt="pics" className="img-fluid w-50 h-50" src="Concentrix.png" width="150px" height="auto" /></div>
+                                            <div className="col-md-3"><img alt="pics" className="img-fluid w-50 h-50" src="Lavya-Associates.jpg" width="150px" height="auto" /></div>
+                                            <div className="col-md-3"><img alt="pics" className="img-fluid w-50 h-50" src="TCS.png" width="150px" height="auto" /></div>
+                                            <div className="col"><img alt="pics" className="img-fluid w-50 h-50" src="wipro.png" /></div>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="carousel-item">
                                     <div className="container" style={{ paddingRight: 20, paddingLeft: 20 }}>
                                         <div className="row" style={{ marginRight: 0, marginLeft: 0, paddingRight: 10, paddingLeft: 10 }}>
-                                            <div className="col-md-3"><img className="img-fluid w-50 h-50" src="Concentrix.png" width="150px" height="auto" /></div>
-                                            <div className="col-md-3"><img className="img-fluid w-50 h-50" src="Lavya-Associates.jpg" width="150px" height="auto" /></div>
-                                            <div className="col-md-3"><img className="img-fluid w-50 h-50" src="TCS.png" width="150px" height="auto" /></div>
-                                            <div className="col"><img className="img-fluid w-50 h-50" src="wipro.png" /></div>
+                                            <div className="col-md-3"><img alt="pics" className="img-fluid w-50 h-50" src="Concentrix.png" width="150px" height="auto" /></div>
+                                            <div className="col-md-3"><img alt="pics" className="img-fluid w-50 h-50" src="Lavya-Associates.jpg" width="150px" height="auto" /></div>
+                                            <div className="col-md-3"><img alt="pics" className="img-fluid w-50 h-50" src="TCS.png" width="150px" height="auto" /></div>
+                                            <div className="col"><img alt="pics" className="img-fluid w-50 h-50" src="wipro.png" /></div>
                                         </div>
                                     </div>
                                 </div>
@@ -200,7 +200,7 @@ const Home = () => {
                                         <div className="card-imagia">
                                             <div className="front-imagia">
                                                 <div className="cover-imagia"><img alt src="https://unsplash.it/720/500?image=1067" /></div>
-                                                <div className="user-imagia"><img className="img-circle" alt src="profile.jpg" /></div>
+                                                <div className="user-imagia"><img alt="pics" className="img-circle" alt src="profile.jpg" /></div>
                                                 <div className="content-imagia">
                                                     <h3 className="name-imagia">Anuj Verma</h3>
                                                     <p className="subtitle-imagia">Developer</p>
@@ -227,7 +227,7 @@ const Home = () => {
                                         <div className="card-imagia">
                                             <div className="front-imagia">
                                                 <div className="cover-imagia cover-gradient" />
-                                                <div className="user-imagia"><img className="img-circle" alt src="https://unsplash.it/120/120?image=64" /></div>
+                                                <div className="user-imagia"><img alt="pics" className="img-circle" alt src="https://unsplash.it/120/120?image=64" /></div>
                                                 <div className="content-imagia">
                                                     <h3 className="name-imagia">Gurjeet Singh</h3>
                                                     <p className="subtitle-imagia">Designer</p>
@@ -264,7 +264,7 @@ const Home = () => {
                                 <div className="col-lg-12">
                                     <ul className="list-group timeline">
                                         <li className="list-group-item">
-                                            <div className="timeline-image"><img className="rounded-circle img-fluid" src="1.jpg" /></div>
+                                            <div className="timeline-image"><img alt="pics" className="rounded-circle img-fluid" src="1.jpg" /></div>
                                             <div className="timeline-panel">
                                                 <div className="timeline-heading">
                                                     <h4>1918<br /></h4>
@@ -276,7 +276,7 @@ const Home = () => {
                                             </div>
                                         </li>
                                         <li className="list-group-item timeline-inverted">
-                                            <div className="timeline-image"><img className="rounded-circle img-fluid" src="2.jpg" /></div>
+                                            <div className="timeline-image"><img alt="pics" className="rounded-circle img-fluid" src="2.jpg" /></div>
                                             <div className="timeline-panel">
                                                 <div className="timeline-heading">
                                                     <h4>Vision</h4>
@@ -288,7 +288,7 @@ const Home = () => {
                                             </div>
                                         </li>
                                         <li className="list-group-item">
-                                            <div className="timeline-image"><img className="rounded-circle img-fluid" src="3.jpg" /></div>
+                                            <div className="timeline-image"><img alt="pics" className="rounded-circle img-fluid" src="3.jpg" /></div>
                                             <div className="timeline-panel">
                                                 <div className="timeline-heading">
                                                     <h4>Mission</h4>
@@ -299,7 +299,7 @@ const Home = () => {
                                             </div>
                                         </li>
                                         <li className="list-group-item timeline-inverted">
-                                            <div className="timeline-image"><img className="rounded-circle img-fluid" src="4.jpg" /></div>
+                                            <div className="timeline-image"><img alt="pics" className="rounded-circle img-fluid" src="4.jpg" /></div>
                                             <div className="timeline-panel">
                                                 <div className="timeline-heading">
                                                     <h4>Objective</h4>
