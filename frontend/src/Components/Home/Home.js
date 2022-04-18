@@ -252,7 +252,7 @@ const Home = () => {
                             </div>
                         </div>
                     </section>
-                    <section id="section-timeline">
+                    <section id="section-timeline aboutUs">
                         <div className="container">
                             <div className="row">
                                 <div className="col-lg-12 text-center">

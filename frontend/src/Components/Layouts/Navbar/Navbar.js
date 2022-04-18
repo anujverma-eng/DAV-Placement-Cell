@@ -68,9 +68,9 @@ const Navbar = () => {
         <Navbars.Toggle aria-controls="responsive-navbar-nav" />
         <Navbars.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#features">Home</Nav.Link>
-            <Nav.Link href="#pricing">About Us</Nav.Link>
-            <Nav.Link href="#pricing">Contact Us</Nav.Link>
+            <Nav.Link href="/">Home</Nav.Link>
+            <Nav.Link href="/">About Us</Nav.Link>
+            <Nav.Link href="/">Contact Us</Nav.Link>
             {(!student || (student && student.role === 'admin')) && <li className="nav-item"><Link className="nav-link" to="/new/job">Post Job</Link></li>}
             {student && student.role === 'admin' ? <li className="nav-item"><Link to={'/admin/dashboard'} className="nav-link" style={{ cursor: "pointer" }} >Dashboard</Link></li> : <li />}
           </Nav>
