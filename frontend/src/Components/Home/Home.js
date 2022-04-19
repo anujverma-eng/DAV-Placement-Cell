@@ -14,7 +14,9 @@ const Home = () => {
 
     const dispatch = useDispatch();
 
-    const { loading, error, jobs, jobsCount } = useSelector((state) => state.jobReducer);
+    // const { studentsCount } = useSelector((state) => state.adminStudentsReducer);
+    // const { jobApplied } = useSelector((state) => state.adminAllAppliedReducer);
+    const { loading, error, jobs } = useSelector((state) => state.jobReducer);
     const { isAuthenticated } = useSelector((state) => state.studentReducer);
     useEffect(() => {
         if (error) {
@@ -32,15 +34,39 @@ const Home = () => {
                 <Fragment >
                     <Metadata title="D.A.V. Placement Cell" />
 
-                    <header style={{ paddingTop: 62 }}>
-                        <div className="carousel slide carousel-fade" data-bs-ride="carousel" id="carousel-1" style={{ height: 600 }}>
-                            <div className="carousel-inner h-100">
-                                <div className="carousel-item active h-100"><img alt="pics" className="img-fluid w-100 d-block position-absolute h-100 fit-cover" src="slide-5.jpg" style={{ zIndex: -1 }} />
+                    <header >
+                        <div className="carousel-inner h-100">
+                            <div className="carousel slide" data-bs-ride="carousel" id="carousel-1" style={{ height: 600 }}>
+                                <div className="carousel-item active h-100"><img alt="pics" className="img-fluid w-100 d-block position-absolute h-100 fit-cover" src="slide_3.jpg" style={{ zIndex: -1 }} />
                                     <div className="container d-flex flex-column justify-content-center h-100">
                                         <div className="row">
                                             <div className="col-md-6 col-xl-4 offset-md-2">
                                                 <div style={{ maxWidth: 350 }}>
                                                     <h1 className="text-uppercase fw-bold text-white">D.A.V College, Jalandhar</h1>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="carousel-item h-100"><img alt="pics" className="w-100 d-block position-absolute h-100 fit-cover" src="slide_2.jpg" style={{ zIndex: -1 }} />
+                                    <div className="container d-flex flex-column justify-content-center h-100">
+                                        <div className="row">
+                                            <div className="col-md-6 col-xl-4 offset-md-2">
+                                                <div style={{ maxWidth: 350 }}>
+                                                    <h1 className="text-uppercase fw-bold">Biben dum<br />fringi dictum, augue purus</h1>
+                                                    <p className="my-3">Tincidunt laoreet leo, adipiscing taciti tempor. Primis senectus sapien, risus donec ad fusce augue interdum.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="carousel-item h-100"><img alt="pics" className="w-100 d-block position-absolute h-100 fit-cover" src="slide_1.jpg" style={{ zIndex: -1 }} />
+                                    <div className="container d-flex flex-column justify-content-center h-100">
+                                        <div className="row">
+                                            <div className="col-md-6 col-xl-4 offset-md-2">
+                                                <div style={{ maxWidth: 350 }}>
+                                                    <h1 className="text-uppercase fw-bold">Biben dum<br />fringi dictum, augue purus</h1>
+                                                    <p className="my-3">Tincidunt laoreet leo, adipiscing taciti tempor. Primis senectus sapien, risus donec ad fusce augue interdum.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -58,19 +84,7 @@ const Home = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="carousel-item h-100"><img alt="pics" className="w-100 d-block position-absolute h-100 fit-cover" src="slide-4.jpg" style={{ zIndex: -1 }} />
-                                    <div className="container d-flex flex-column justify-content-center h-100">
-                                        <div className="row">
-                                            <div className="col-md-6 col-xl-4 offset-md-2">
-                                                <div style={{ maxWidth: 350 }}>
-                                                    <h1 className="text-uppercase fw-bold">Biben dum<br />fringi dictum, augue purus</h1>
-                                                    <p className="my-3">Tincidunt laoreet leo, adipiscing taciti tempor. Primis senectus sapien, risus donec ad fusce augue interdum.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="carousel-item h-100"><img alt="pics" className="w-100 d-block position-absolute h-100 fit-cover" src="slide-6.jpg" style={{ zIndex: -1 }} />
+                                <div className="carousel-item h-100"><img alt="pics" className="w-100 d-block position-absolute h-100 fit-cover" src="slide-5.jpg" style={{ zIndex: -1 }} />
                                     <div className="container d-flex flex-column justify-content-center h-100">
                                         <div className="row">
                                             <div className="col-md-6 col-xl-4 offset-md-2">
@@ -88,6 +102,7 @@ const Home = () => {
                                 <li data-bs-target="#carousel-1" data-bs-slide-to={1} />
                                 <li data-bs-target="#carousel-1" data-bs-slide-to={2} />
                                 <li data-bs-target="#carousel-1" data-bs-slide-to={3} />
+                                <li data-bs-target="#carousel-1" data-bs-slide-to={4} />
                             </ol>
                         </div>
                     </header>
@@ -112,7 +127,7 @@ const Home = () => {
                         </section>
                     </section>
                     <section className="d-none d-md-block">
-                        <div className="carousel slide" data-bs-ride="carousel" id="carousel-2">
+                        <div className="carousel slide carousel-fade" data-bs-ride="carousel" id="carousel-2">
                             <div className="carousel-inner">
                                 <div className="carousel-item active">
                                     <div className="container" style={{ paddingRight: 20, paddingLeft: 20 }}>
@@ -127,9 +142,19 @@ const Home = () => {
                                 <div className="carousel-item">
                                     <div className="container" style={{ paddingRight: 20, paddingLeft: 20 }}>
                                         <div className="row" style={{ marginRight: 0, marginLeft: 0, paddingRight: 10, paddingLeft: 10 }}>
-                                            <div className="col-md-3"><img alt="pics" className="img-fluid w-50 h-50" src="Concentrix.png" width="150px" height="auto" /></div>
+                                            <div className="col-md-3"><img alt="pics" className="img-fluid w-50 h-50" src="kotak.png" width="150px" height="auto" /></div>
                                             <div className="col-md-3"><img alt="pics" className="img-fluid w-50 h-50" src="Lavya-Associates.jpg" width="150px" height="auto" /></div>
-                                            <div className="col-md-3"><img alt="pics" className="img-fluid w-50 h-50" src="TCS.png" width="150px" height="auto" /></div>
+                                            <div className="col-md-3"><img alt="pics" className="img-fluid w-50 h-50" src="SBI.png" width="150px" height="auto" /></div>
+                                            <div className="col"><img alt="pics" className="img-fluid w-50 h-50" src="amazon.png" /></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="carousel-item">
+                                    <div className="container" style={{ paddingRight: 20, paddingLeft: 20 }}>
+                                        <div className="row" style={{ marginRight: 0, marginLeft: 0, paddingRight: 10, paddingLeft: 10 }}>
+                                            <div className="col-md-3"><img alt="pics" className="img-fluid w-50 h-50" src="amazon.png" width="150px" height="auto" /></div>
+                                            <div className="col-md-3"><img alt="pics" className="img-fluid w-50 h-50" src="SBI.png" width="150px" height="auto" /></div>
+                                            <div className="col-md-3"><img alt="pics" className="img-fluid w-50 h-50" src="kotak.png" width="150px" height="auto" /></div>
                                             <div className="col"><img alt="pics" className="img-fluid w-50 h-50" src="wipro.png" /></div>
                                         </div>
                                     </div>
@@ -137,24 +162,21 @@ const Home = () => {
                                 <div className="carousel-item">
                                     <div className="container" style={{ paddingRight: 20, paddingLeft: 20 }}>
                                         <div className="row" style={{ marginRight: 0, marginLeft: 0, paddingRight: 10, paddingLeft: 10 }}>
-                                            <div className="col-md-3"><img alt="pics" className="img-fluid w-50 h-50" src="Concentrix.png" width="150px" height="auto" /></div>
-                                            <div className="col-md-3"><img alt="pics" className="img-fluid w-50 h-50" src="Lavya-Associates.jpg" width="150px" height="auto" /></div>
+                                            <div className="col-md-3"><img alt="pics" className="img-fluid w-50 h-50" src="SBI.png" width="150px" height="auto" /></div>
+                                            <div className="col-md-3"><img alt="pics" className="img-fluid w-50 h-50" src="amazon.png" width="150px" height="auto" /></div>
                                             <div className="col-md-3"><img alt="pics" className="img-fluid w-50 h-50" src="TCS.png" width="150px" height="auto" /></div>
-                                            <div className="col"><img alt="pics" className="img-fluid w-50 h-50" src="wipro.png" /></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="carousel-item">
-                                    <div className="container" style={{ paddingRight: 20, paddingLeft: 20 }}>
-                                        <div className="row" style={{ marginRight: 0, marginLeft: 0, paddingRight: 10, paddingLeft: 10 }}>
-                                            <div className="col-md-3"><img alt="pics" className="img-fluid w-50 h-50" src="Concentrix.png" width="150px" height="auto" /></div>
-                                            <div className="col-md-3"><img alt="pics" className="img-fluid w-50 h-50" src="Lavya-Associates.jpg" width="150px" height="auto" /></div>
-                                            <div className="col-md-3"><img alt="pics" className="img-fluid w-50 h-50" src="TCS.png" width="150px" height="auto" /></div>
-                                            <div className="col"><img alt="pics" className="img-fluid w-50 h-50" src="wipro.png" /></div>
+                                            <div className="col"><img alt="pics" className="img-fluid w-50 h-50" src="kotak.png" /></div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <div><a className="carousel-control-prev" href="#carousel-2" role="button" data-bs-slide="prev"><span className="carousel-control-prev-icon" /><span className="visually-hidden">Previous</span></a><a className="carousel-control-next" href="#carousel-2" role="button" data-bs-slide="next"><span className="carousel-control-next-icon" /><span className="visually-hidden">Next</span></a></div>
+                            <ol className="carousel-indicators">
+                                <li data-bs-target="#carousel-2" data-bs-slide-to={0} className="active" />
+                                <li data-bs-target="#carousel-2" data-bs-slide-to={1} />
+                                <li data-bs-target="#carousel-2" data-bs-slide-to={2} />
+                                <li data-bs-target="#carousel-2" data-bs-slide-to={3} />
+                            </ol>
                         </div>
                     </section>
                     <div className="container">
@@ -172,19 +194,19 @@ const Home = () => {
                         <div className="container">
                             <div className="row" style={{ background: 'var(--bs-gray-300)' }}>
                                 <div className="col" style={{ boxShadow: '1px 1px 1px 1px rgb(205,205,205)', borderWidth: 1, background: 'var(--bs-warning)' }}>
-                                    <h1 className="text-center text-primary">52</h1>
-                                    <p className="text-center text-muted">No. of Companies Visited</p>
+                                    <h1 className="text-center text-primary">{jobs && jobs.length}+</h1>
+                                    <p className="text-center text-muted">Jobs Posted</p>
                                 </div>
                                 <div className="col" style={{ boxShadow: '1px 1px 1px 1px rgb(205,205,205)', borderWidth: 1, background: 'var(--bs-gray-400)' }}>
-                                    <h1 className="text-center text-primary">52</h1>
-                                    <p className="text-center text-muted">No. of Companies Visited</p>
+                                    <h1 className="text-center text-primary">50+</h1>
+                                    <p className="text-center text-muted">Students Enrolled</p>
                                 </div>
                                 <div className="col" style={{ boxShadow: '1px 1px 1px 1px rgb(205,205,205)', borderWidth: 1, background: 'var(--bs-warning)' }}>
-                                    <h1 className="text-center text-primary">52</h1>
-                                    <p className="text-center text-muted">No. of Companies Visited</p>
+                                    <h1 className="text-center text-primary">32+</h1>
+                                    <p className="text-center text-muted">Selections</p>
                                 </div>
                                 <div className="col" style={{ boxShadow: '1px 1px 1px 1px rgb(205,205,205)', borderWidth: 1, background: 'var(--bs-gray-400)' }}>
-                                    <h1 className="text-center text-primary">52</h1>
+                                    <h1 className="text-center text-primary">15+</h1>
                                     <p className="text-center text-muted">No. of Companies Visited</p>
                                 </div>
                             </div>
@@ -204,19 +226,19 @@ const Home = () => {
                                                 <div className="content-imagia">
                                                     <h3 className="name-imagia">Anuj Verma</h3>
                                                     <p className="subtitle-imagia">Developer</p>
-                                                    <p className="text-center"><em>Tantum autem cuique tribuendum, primum quantum ipse efficere possis, deinde etiam quantum ille quem diligas atque adiuves.</em></p>
+                                                    <p className="text-center"><em>I am a Professional Full Stack Developer, I am skilled with React js, Node js, Mongo DB, Next js, Git, Node js and I am always trying to learn something new.</em></p>
                                                 </div>
                                                 <div className="footer-imagia"><span><i className="fa fa-plus" /> More info</span></div>
                                             </div>
                                             <div className="back-imagia">
                                                 <div className="content-imagia content-back-imagia">
                                                     <div>
-                                                        <h3 className="text-center">Lorem Ipsum</h3>
+                                                        <h3 className="text-center">Anuj Verma</h3>
                                                         <p className="text-center">Et hanc quidem praeter oppida multa duae civitates exornant Seleucia opus Seleuci regis, et Claudiopolis quam deduxit coloniam Claudius Caesar. Isaura enim antehac nimium potens, olim subversa ut rebellatrix interneciva aegre vestigia claritudinis pristinae monstrat admodum pauca. </p>
                                                     </div>
                                                 </div>
                                                 <div className="footer-imagia">
-                                                    <div className="social-imagia text-center"><a href="/"><i className="fa fa-facebook" /></a><a href="/"><i className="fa fa-linkedin" /></a><a href="/"><i className="fa fa-twitter" /></a></div>
+                                                    <div className="social-imagia text-center"><a href="/"><i className="fa fa-facebook" /></a><a href="https://www.linkedin.com/in/anuj-verma1/" target={"_blank"} rel="noreferrer"><i className="fa fa-linkedin" /></a><a href="https://github.com/anujverma-eng" target={"_blank"} rel="noreferrer"><i className="fa fa-github" /></a></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -227,23 +249,23 @@ const Home = () => {
                                         <div className="card-imagia">
                                             <div className="front-imagia">
                                                 <div className="cover-imagia cover-gradient" />
-                                                <div className="user-imagia"><img alt="pics" className="img-circle" src="https://unsplash.it/120/120?image=64" /></div>
+                                                <div className="user-imagia"><img alt="pics" className="img-circle" src="profile_gurjeet.jpg" /></div>
                                                 <div className="content-imagia">
                                                     <h3 className="name-imagia">Gurjeet Singh</h3>
                                                     <p className="subtitle-imagia">Designer</p>
-                                                    <p className="text-center"><em>Tantum autem cuique tribuendum, primum quantum ipse efficere possis, deinde etiam quantum ille quem diligas atque adiuves. </em></p>
+                                                    <p className="text-center"><em>I am a Professional Designer, I design Awesome web designs, I am skilled with Bootstrap, Material UI, Figma and UI/UX designing.</em></p>
                                                 </div>
                                                 <div className="footer-imagia"><span><i className="fa fa-plus" /> More info</span></div>
                                             </div>
                                             <div className="back-imagia">
                                                 <div className="content-imagia content-back-imagia">
                                                     <div>
-                                                        <h3 className="text-center">Lorem Ipsum</h3>
+                                                        <h3 className="text-center">Gurjeet Singh</h3>
                                                         <p className="text-center">Et hanc quidem praeter oppida multa duae civitates exornant Seleucia opus Seleuci regis, et Claudiopolis quam deduxit coloniam Claudius Caesar. Isaura enim antehac nimium potens, olim subversa ut rebellatrix interneciva aegre vestigia claritudinis pristinae monstrat admodum pauca. </p>
                                                     </div>
                                                 </div>
                                                 <div className="footer-imagia">
-                                                    <div className="social-imagia text-center"><a href="/"><i className="fa fa-facebook" /></a><a href="/"><i className="fa fa-linkedin" /></a><a href="/"><i className="fa fa-twitter" /></a></div>
+                                                    <div className="social-imagia text-center"><a href="/"><i className="fa fa-facebook" /></a><a href="https://www.linkedin.com/in/anuj-verma1/" target={"_blank"} rel="noreferrer"><i className="fa fa-linkedin" /></a><a href="https://github.com/anujverma-eng" target={"_blank"} rel="noreferrer"><i className="fa fa-github" /></a></div>
                                                 </div>
                                             </div>
                                         </div>
