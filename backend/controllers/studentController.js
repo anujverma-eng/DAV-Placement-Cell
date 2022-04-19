@@ -145,7 +145,7 @@ exports.forgotPassword = catchAsyncErrors(async (req, res, next) => {
     // Create Link for Forgot password
 
     //! below is for -- production
-    const resetPasswordUrl = `${req.protocol}://${req.get("host")}/api/v1/password/reset/${resetToken}`;
+    const resetPasswordUrl = `${req.protocol}://${req.get("host")}/password/reset/${resetToken}`;
 
     //!below is for -- development
     // const resetPasswordUrl = `${process.env.FRONTEND_URL}/password/reset/${resetToken}`;
