@@ -46,7 +46,6 @@ const MyApplied = () => {
   const rows = [];
 
   jobApplied && jobApplied.forEach((element, idx) => {
-    console.log(element);
     if (element.appliedJobs[0].job !== null) {
       rows.push({
         id: element.appliedJobs[0].job._id,
