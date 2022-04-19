@@ -302,7 +302,6 @@ const Home = () => {
                                             <div className="timeline-panel">
                                                 <div className="timeline-heading">
                                                     <h4>Vision</h4>
-                                                    <h4 className="subheading" />
                                                 </div>
                                                 <div className="timeline-body">
                                                     <p className="text-muted">To make India an intellectually formidable power house by creating a cadre of motivated and prospective individuals who become catalysts of change through education which is value and need based and which is also globally relevant, yet rooted in the matrix of Indian philosophy.</p>
