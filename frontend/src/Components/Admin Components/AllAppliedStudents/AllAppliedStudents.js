@@ -124,11 +124,11 @@ const AllAppliedStudents = () => {
                                                     <div><label className="form-label">Applied on</label><span style={{ marginLeft: 8 }}><strong><Moment format='DD MMM YYYY, hh:mm'></Moment></strong></span></div>
                                                     <div><label className="form-label">Student Id</label><span style={{ marginLeft: 8 }}><strong>{element && element.student && element.student._id}</strong></span></div>
                                                     <div><label className="form-label">Job Id</label><span style={{ marginLeft: 8 }}><strong>{element.appliedJobs[0].job && element.appliedJobs[0].job._id}</strong></span></div>
-                                                    <div><label className="form-label">Applied Id</label><span style={{ marginLeft: 8 }}><strong>{element && element._id}</strong></span></div>
+                                                    <div><label className="form-label">Applied Id</label><span style={{ marginLeft: 8 }}><strong>{element && element._id && element._id}</strong></span></div>
                                                     <div className="text-success"><label className="form-label">Status</label><span className="text-danger" style={{ marginLeft: 8 }}><strong>{element && element.interviewStatus}</strong></span></div>
                                                     <div className="d-flex gap-3">
-                                                        <button onClick={(e) => handleDelete(element && element._id)} className="btn btn-dangper btn-sm" type="button"><DeleteForeverIcon /></button>
-                                                        <button onClick={(e) => handleEdit(element && element._id, element && element.interviewStatus)} className="btn btn-primary btn-sm" type="button"><EditIcon /></button>
+                                                        <button onClick={(e) => handleDelete(element && element._id && element._id)} className="btn btn-dangper btn-sm" type="button"><DeleteForeverIcon /></button>
+                                                        <button onClick={(e) => handleEdit(element && element._id && element._id, element && element.interviewStatus)} className="btn btn-primary btn-sm" type="button"><EditIcon /></button>
                                                     </div>
                                                     <hr className="d-block d-md-none" />
                                                 </div>
