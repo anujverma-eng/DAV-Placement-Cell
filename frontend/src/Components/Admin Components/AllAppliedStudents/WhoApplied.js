@@ -144,7 +144,7 @@ const WhoApplied = () => {
                                                 </div>
                                                 <div className="col-md-6 col-xl-3 col-xxl-4" style={{ paddingBottom: 5 }}>
                                                     <div><label className="form-label">Applied on</label><span style={{ marginLeft: 8 }}><strong><Moment format='DD MMM YYYY, hh:mm'></Moment></strong></span></div>
-                                                    <div><label className="form-label">Student Id</label><span style={{ marginLeft: 8 }}><strong>{element && element.student && element.student._id}</strong></span></div>
+                                                    <div><label className="form-label">Student Id</label><span style={{ marginLeft: 8 }}><strong>{element && element.student && element.student._id && element.student._id}</strong></span></div>
                                                     <div><label className="form-label">Job Id</label><span style={{ marginLeft: 8 }}><strong>{element.appliedJobs[0].job && element.appliedJobs[0].job._id}</strong></span></div>
                                                     <div><label className="form-label">Applied Id</label><span style={{ marginLeft: 8 }}><strong>{element && element._id && element._id}</strong></span></div>
                                                     <div className="text-success"><label className="form-label">Status</label><span className="text-danger" style={{ marginLeft: 8 }}><strong>{element && element.interviewStatus}</strong></span></div>
