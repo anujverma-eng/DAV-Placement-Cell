@@ -149,7 +149,7 @@ const Dashboard = () => {
                                     <div className="row align-items-center no-gutters">
                                         <div className="col me-2">
                                             <div className="text-uppercase text-warning fw-bold text-xs mb-1"><span>Pending Job approvals</span></div>
-                                            <div className="text-dark fw-bold h5 mb-0"><span>{(jobsCount - jobs.length).toString()}</span></div>
+                                            <div className="text-dark fw-bold h5 mb-0"><span>{jobs && (jobsCount - jobs.length).toString()}</span></div>
                                         </div>
                                         <div className="col-auto"><i className="fas fa-stopwatch fa-2x text-gray-300" /></div>
                                     </div>
