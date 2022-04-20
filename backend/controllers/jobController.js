@@ -11,7 +11,8 @@ exports.createJob = catchAsyncErrors(async (req, res, next) => {
 
     const job = await Job.create(req.body);
 
-    const viewJobURL = `${process.env.FRONTEND_URL}/create/job/success/${job._id}`;
+    // const viewJobURL = `${process.env.FRONTEND_URL}/create/job/success/${job._id}`;
+    const viewJobURL = `${req.protocol}://${req.get("host")}/create/job/success/${job._id}`;
 
     try {
         await sendEmail({
