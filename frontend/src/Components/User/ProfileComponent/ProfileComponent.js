@@ -187,7 +187,7 @@ const ProfileComponent = () => {
                             </div>
                             <div className="col-md-6 col-lg-5 col-xl-5 col-xxl-5 d-flex gap-4" style={{ marginBottom: 5 }}>
                                 <div style={{ marginBottom: 8 }}><button className="btn btn-danger" type="button" onClick={handleClickOpen}><i className="fa fa-edit" />Change Password</button></div>
-                                <div style={{ marginBottom: 5 }}><button className="btn btn-warning" type="button">My Applied</button></div>
+                                <div style={{ marginBottom: 5 }}><Link to="/myApplied" className="btn btn-warning" type="button">My Applied</Link></div>
                             </div>
                         </div>
                     </div>

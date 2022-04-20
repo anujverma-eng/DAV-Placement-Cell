@@ -28,7 +28,6 @@ const CreateJob = () => {
         }
         if (message) {
             alert.success(message);
-            jobCreated && console.log(jobCreated._id);
             jobCreated && navigate(`/create/job/success/${jobCreated._id}`, { replace: true });
         }
         if (student && student.role === 'student') {
