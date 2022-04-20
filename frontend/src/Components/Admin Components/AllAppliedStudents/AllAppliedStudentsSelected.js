@@ -100,7 +100,7 @@ const AllAppliedStudentsSelected = () => {
                                                     <div className="row justify-content-center align-items-center">
                                                         <div className="col align-self-center"><img className="img-fluid" src={element && element.student && element.student.avatar && element.student.avatar.url && element.student.avatar.url} alt="Profile" style={{ height: 180, width: 'auto' }} /></div>
                                                         <div className="col">
-                                                            <div><span className="text-capitalize text-primary"><strong>{`${element && element.student && element.student.firstName} ${element.student.lastName}`}</strong></span></div>
+                                                            <div><span className="text-capitalize text-primary"><strong>{`${element && element.student && element.student.firstName} ${element && element.student && element.student.lastName}`}</strong></span></div>
                                                             <div><span className="text-capitalize text-dark"><strong>{`${element.student.classIn}, ${element.student.year}`}</strong></span></div>
                                                             <div><span><strong>{element && element.student && element.student.phone}</strong></span></div>
                                                             <div><span><strong>{element && element.student && element.student.email}</strong></span></div>
